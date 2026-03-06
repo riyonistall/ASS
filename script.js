@@ -5,6 +5,7 @@
 /* ─── Loader ─── */
 (function initLoader() {
   spawnLoaderParticles();
+  cycleAssLetterFonts();
 
   // After bar fills + small pause → switch to main site
   setTimeout(() => {
@@ -19,6 +20,66 @@
     }, 900);
   }, 5000); // 5s total loader time
 })();
+
+/* ─── ASS loader letter font cycling ─── */
+function cycleAssLetterFonts() {
+  const wildFonts = [
+    "'Bangers', cursive",
+    "'Lobster', cursive",
+    "'Press Start 2P', monospace",
+    "'Righteous', cursive",
+    "'Ultra', serif",
+    "'Black Ops One', cursive",
+    "'Creepster', cursive",
+    "'Monoton', cursive",
+    "'Russo One', sans-serif",
+    "'Boogaloo', cursive",
+    "'Fredoka One', cursive",
+  ];
+
+  const discoColors = [
+    '#ff0000','#ff4400','#ff8800','#ffcc00','#ffff00',
+    '#88ff00','#00ff44','#00ffcc','#00ccff','#0066ff',
+    '#6600ff','#cc00ff','#ff00cc','#ff0066',
+    '#ff6b6b','#4ecdc4','#ffe66d','#bd93f9','#ff79c6','#8be9fd',
+  ];
+
+  const letters = document.querySelectorAll('.ass-letter');
+
+  letters.forEach((letter, idx) => {
+    const startDelay = 1000 + idx * 300;
+    setTimeout(() => {
+      let cycle = 0;
+      const totalCycles = wildFonts.length * 2;
+      const intervalMs = 80;
+
+      letter.style.display = 'inline-block';
+
+      const timer = setInterval(() => {
+        const font = wildFonts[cycle % wildFonts.length];
+        const color = discoColors[Math.floor(Math.random() * discoColors.length)];
+        letter.style.fontFamily = font;
+        letter.style.color = color;
+        letter.style.textShadow = `0 0 30px ${color}, 0 0 60px ${color}88`;
+
+        letter.style.transform = `scale(${1 + Math.random() * 0.25}) rotate(${(Math.random() - 0.5) * 10}deg)`;
+
+        cycle++;
+
+        if (cycle >= totalCycles) {
+          clearInterval(timer);
+          letter.style.fontFamily = "'Fredoka One', cursive";
+          letter.style.color = '#ffffff';
+          letter.style.textShadow = '0 0 40px #ffffff88';
+          letter.style.transform = 'scale(1.15) rotate(0deg)';
+          setTimeout(() => {
+            letter.style.transform = 'scale(1) rotate(0deg)';
+          }, 200);
+        }
+      }, intervalMs);
+    }, startDelay);
+  });
+}
 
 function spawnLoaderParticles() {
   const container = document.getElementById('particles');
@@ -305,72 +366,57 @@ siteObserver.observe(document.getElementById('mainSite'), { attributes: true, at
 
 /* ─── Music Player ─── */
 (function initMusic() {
-  const audio   = document.getElementById('bgMusic');
-  const btn     = document.getElementById('musicBtn');
-  const icon    = document.getElementById('musicIcon');
-  const label   = document.getElementById('musicLabel');
-
-  if (!audio || !btn) return;
+  const audio = document.getElementById('bgMusic');
+  if (!audio) return;
 
   audio.volume = 0.65;
-  audio.muted  = false;
+  audio.muted = true;
+  audio.play().catch(() => {});
 
-  let isMuted = false;
-
-  function updateBtn() {
-    if (isMuted) {
-      icon.textContent  = '🔇';
-      label.textContent = 'UNMUTE';
-      btn.classList.add('muted');
-    } else {
-      icon.textContent  = '🎵';
-      label.textContent = 'MUTE';
-      btn.classList.remove('muted');
-    }
+  // Unmute silently on first user interaction
+  function unmute() {
+    audio.muted = false;
+    document.removeEventListener('click',      unmute);
+    document.removeEventListener('keydown',    unmute);
+    document.removeEventListener('touchstart', unmute);
   }
-
-  // Try autoplay unmuted right away
-  audio.play().then(() => {
-    updateBtn();
-    spawnMusicNotes();
-  }).catch(() => {
-    // Browser blocked — wait for first user gesture then play
-    function onFirstInteraction() {
-      audio.play().then(() => {
-        updateBtn();
-        spawnMusicNotes();
-      }).catch(() => {});
-      document.removeEventListener('click', onFirstInteraction);
-      document.removeEventListener('keydown', onFirstInteraction);
-    }
-    document.addEventListener('click', onFirstInteraction);
-    document.addEventListener('keydown', onFirstInteraction);
-    updateBtn();
-  });
-
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    isMuted = !isMuted;
-    audio.muted = isMuted;
-    if (!isMuted && audio.paused) audio.play().catch(() => {});
-    if (!isMuted) spawnMusicNotes();
-    updateBtn();
-  });
-
-  updateBtn();
+  document.addEventListener('click',      unmute);
+  document.addEventListener('keydown',    unmute);
+  document.addEventListener('touchstart', unmute);
 })();
 
-function spawnMusicNotes() {
-  const wrap  = document.getElementById('musicBtnWrap');
-  const notes = ['🎵','🎶','🎤','🎸','🎧'];
-  for (let i = 0; i < 4; i++) {
-    const n = document.createElement('span');
-    n.className  = 'music-note-burst';
-    n.textContent = notes[Math.floor(Math.random() * notes.length)];
-    n.style.left = `${Math.random() * 60 - 10}px`;
-    n.style.top  = `${Math.random() * 20}px`;
-    n.style.animationDelay = `${i * 0.15}s`;
-    wrap.appendChild(n);
-    setTimeout(() => n.remove(), 1200);
-  }
-}
+/* ─── Click anywhere → random emoji pop ─── */
+(function initClickEmoji() {
+  const emojiPopStyle = document.createElement('style');
+  emojiPopStyle.textContent = `
+    @keyframes emojiPopUp {
+      0%   { transform: translate(-50%, -50%) scale(0) rotate(-20deg); opacity: 1; }
+      50%  { transform: translate(-50%, -120%) scale(1.4) rotate(10deg); opacity: 1; }
+      100% { transform: translate(-50%, -220%) scale(0.8) rotate(5deg); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(emojiPopStyle);
+
+  const pool = ['🍻','🍆','🍑'];
+
+  document.addEventListener('click', (e) => {
+    const tag = e.target.tagName.toLowerCase();
+    if (['button','a','input','select','textarea'].includes(tag)) return;
+    if (e.target.closest('.friend-card,.modal-box,.music-btn,.meet-btn,.scroll-arrow')) return;
+
+    const el = document.createElement('span');
+    el.textContent = pool[Math.floor(Math.random() * pool.length)];
+    el.style.cssText = `
+      position: fixed;
+      left: ${e.clientX}px;
+      top: ${e.clientY}px;
+      font-size: 2.4rem;
+      pointer-events: none;
+      z-index: 99999;
+      animation: emojiPopUp 0.75s cubic-bezier(.17,.67,.35,1.4) forwards;
+    `;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 800);
+  });
+})();
+
