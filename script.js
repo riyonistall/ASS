@@ -305,59 +305,54 @@ siteObserver.observe(document.getElementById('mainSite'), { attributes: true, at
 
 /* ─── Music Player ─── */
 (function initMusic() {
-  const audio   = document.getElementById('bgMusic');
-  const btn     = document.getElementById('musicBtn');
-  const icon    = document.getElementById('musicIcon');
-  const label   = document.getElementById('musicLabel');
+  const audio = document.getElementById('bgMusic');
+  const btn   = document.getElementById('musicBtn');
+  const icon  = document.getElementById('musicIcon');
+  const label = document.getElementById('musicLabel');
 
   if (!audio || !btn) return;
 
   audio.volume = 0.65;
-  audio.muted  = false;
-
   let isMuted = false;
+  let waitingForGesture = false;
 
-  function updateBtn() {
-    if (isMuted) {
-      icon.textContent  = '🔇';
-      label.textContent = 'UNMUTE';
-      btn.classList.add('muted');
-    } else {
-      icon.textContent  = '🎵';
-      label.textContent = 'MUTE';
-      btn.classList.remove('muted');
-    }
+  function setMuteState(muted) {
+    isMuted = muted;
+    audio.muted = muted;
+    icon.textContent  = muted ? '🔇' : '🎵';
+    label.textContent = muted ? 'UNMUTE' : 'MUTE';
+    btn.classList.toggle('muted', muted);
   }
 
-  // Try autoplay unmuted right away
+  // Try to play unmuted immediately
+  audio.muted = false;
   audio.play().then(() => {
-    updateBtn();
+    setMuteState(false);
     spawnMusicNotes();
   }).catch(() => {
-    // Browser blocked — wait for first user gesture then play
-    function onFirstInteraction() {
+    // Browser requires a user gesture — show TAP TO PLAY
+    waitingForGesture = true;
+    icon.textContent  = '▶️';
+    label.textContent = 'TAP PLAY';
+    btn.classList.add('muted');
+  });
+
+  btn.addEventListener('click', () => {
+    if (waitingForGesture) {
+      // First click: start the music
+      waitingForGesture = false;
+      audio.muted = false;
       audio.play().then(() => {
-        updateBtn();
+        setMuteState(false);
         spawnMusicNotes();
       }).catch(() => {});
-      document.removeEventListener('click', onFirstInteraction);
-      document.removeEventListener('keydown', onFirstInteraction);
+      return;
     }
-    document.addEventListener('click', onFirstInteraction);
-    document.addEventListener('keydown', onFirstInteraction);
-    updateBtn();
-  });
-
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    isMuted = !isMuted;
-    audio.muted = isMuted;
+    // Normal toggle
+    setMuteState(!isMuted);
     if (!isMuted && audio.paused) audio.play().catch(() => {});
     if (!isMuted) spawnMusicNotes();
-    updateBtn();
   });
-
-  updateBtn();
 })();
 
 function spawnMusicNotes() {
