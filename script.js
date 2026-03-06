@@ -364,6 +364,21 @@ const siteObserver = new MutationObserver(() => {
 });
 siteObserver.observe(document.getElementById('mainSite'), { attributes: true, attributeFilter: ['class'] });
 
+/* ─── Side Mute Button → "listen to it please" popup ─── */
+(function initSideMuteBtn() {
+  const btn   = document.getElementById('sideMuteBtn');
+  const popup = document.getElementById('listenPopup');
+  if (!btn || !popup) return;
+
+  let hideTimer;
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    popup.classList.add('show');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => popup.classList.remove('show'), 2500);
+  });
+})();
+
 /* ─── Music Player ─── */
 (function initMusic() {
   const audio = document.getElementById('bgMusic');
