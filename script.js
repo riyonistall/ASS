@@ -18,7 +18,7 @@
       spawnFloatingEmojis();
       observeCards();
     }, 900);
-  }, 5000); // 5s total loader time
+  }, 10000); // 10s total loader time
 })();
 
 /* ─── ASS loader letter font cycling ─── */
@@ -50,7 +50,7 @@ function cycleAssLetterFonts() {
     const startDelay = 1000 + idx * 300;
     setTimeout(() => {
       let cycle = 0;
-      const totalCycles = wildFonts.length * 2;
+      const totalCycles = wildFonts.length * 6;
       const intervalMs = 80;
 
       letter.style.display = 'inline-block';
@@ -364,25 +364,113 @@ const siteObserver = new MutationObserver(() => {
 });
 siteObserver.observe(document.getElementById('mainSite'), { attributes: true, attributeFilter: ['class'] });
 
+/* ─── Photo Lightbox ─── */
+function openPhotoPopup(src, name) {
+  const lb   = document.getElementById('photoLightbox');
+  const img  = document.getElementById('lightboxImg');
+  const label = document.getElementById('lightboxName');
+  if (!lb) return;
+  img.src = src; img.alt = name; label.textContent = name;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePhotoPopup() {
+  const lb = document.getElementById('photoLightbox');
+  if (!lb) return;
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closePhotoPopup();
+});
+
+/* ─── H.H.I. Card Reveal ─── */
+function revealHhi(name) {
+  const blur    = document.getElementById('blur'    + name.charAt(0).toUpperCase() + name.slice(1));
+  const overlay = document.getElementById('overlay' + name.charAt(0).toUpperCase() + name.slice(1));
+  if (!blur || !overlay) return;
+  blur.classList.add('revealed');
+  overlay.classList.add('hidden');
+}
+
+let harshiniStep = 0;
+const harshiniSteps = [
+  'seriously don\'t 🙄',
+  'bro i said no 😤',
+  'WHY ARE YOU STILL CLICKING 😠',
+  'i will not let you see 🛡️',
+  'okay... your sure? 😏',
+  'are you REALLY sure? 🤔',
+  'like actually sure? 😐',
+  'pakka sure bro? 🫵',
+  'last chance to go back 😅',
+  // step 9 (index 9) triggers reveal
+];
+function stepHarshini() {
+  const btn     = document.getElementById('harshiniBtn');
+  const counter = document.getElementById('harshiniCounter');
+  if (!btn) return;
+
+  btn.classList.remove('shake');
+  void btn.offsetWidth;
+  btn.classList.add('shake');
+
+  harshiniStep++;
+
+  if (counter) counter.textContent = `${harshiniStep}/10`;
+
+  // angry red on steps 3–5
+  btn.classList.toggle('angry', harshiniStep >= 3 && harshiniStep <= 5);
+
+  if (harshiniStep <= harshiniSteps.length) {
+    btn.textContent = harshiniSteps[harshiniStep - 1];
+  }
+
+  if (harshiniStep >= 10) {
+    btn.textContent = 'okay fine!! 😤';
+    btn.classList.remove('angry');
+    setTimeout(() => revealHhi('harshini'), 500);
+  }
+}
+
+
+/* ─── Side Mute Button → "listen to it please" popup ─── */
+(function initSideMuteBtn() {
+  const btn   = document.getElementById('sideMuteBtn');
+  const popup = document.getElementById('listenPopup');
+  if (!btn || !popup) return;
+
+  let hideTimer;
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    popup.classList.add('show');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => popup.classList.remove('show'), 2500);
+  });
+})();
+
 /* ─── Music Player ─── */
 (function initMusic() {
   const audio = document.getElementById('bgMusic');
   if (!audio) return;
 
   audio.volume = 0.65;
-  audio.muted = true;
-  audio.play().catch(() => {});
+  const EVENTS = ['click','touchstart','keydown','scroll','pointerdown'];
 
-  // Unmute silently on first user interaction
-  function unmute() {
+  function ensurePlay() {
     audio.muted = false;
-    document.removeEventListener('click',      unmute);
-    document.removeEventListener('keydown',    unmute);
-    document.removeEventListener('touchstart', unmute);
+    if (audio.paused) audio.play().catch(() => {});
+    EVENTS.forEach(ev => document.removeEventListener(ev, ensurePlay));
   }
-  document.addEventListener('click',      unmute);
-  document.addEventListener('keydown',    unmute);
-  document.addEventListener('touchstart', unmute);
+
+  // Try unmuted first (works in some browsers)
+  audio.muted = false;
+  audio.play().catch(() => {
+    // Blocked → start muted, unmute on first gesture
+    audio.muted = true;
+    audio.play().catch(() => {});
+    EVENTS.forEach(ev => document.addEventListener(ev, ensurePlay, { passive: true }));
+  });
 })();
 
 /* ─── Click anywhere → random emoji pop ─── */

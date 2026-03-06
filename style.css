@@ -111,14 +111,14 @@ body {
   border-radius: 100px;
   overflow: hidden;
   opacity: 0;
-  animation: fadeSlideDown 0.4s ease 2.3s forwards;
+  animation: fadeSlideDown 0.4s ease 7.0s forwards;
 }
 
 .loader-bar {
   height: 100%; width: 0;
   background: linear-gradient(90deg, var(--ali-color), var(--sid-color), var(--sat-color));
   border-radius: 100px;
-  animation: barFill 2s cubic-bezier(.4,0,.2,1) 2.4s forwards;
+  animation: barFill 2s cubic-bezier(.4,0,.2,1) 7.1s forwards;
   box-shadow: 0 0 12px var(--sid-color);
 }
 
@@ -128,7 +128,7 @@ body {
   font-size: 0.85rem;
   color: var(--text-secondary);
   opacity: 0;
-  animation: fadeSlideDown 0.4s ease 2.5s forwards;
+  animation: fadeSlideDown 0.4s ease 7.2s forwards;
 }
 
 .loader-bottom-text {
@@ -819,6 +819,77 @@ body {
   font-size: 0.82rem; color: var(--text-primary);
 }
 
+/* ═══════════════════════════════════
+   SIDE MUTE BUTTON
+   ═══════════════════════════════════ */
+
+.side-mute-btn {
+  position: fixed;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 7000;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  border: 2px solid #ffffff44;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 28px #ffffff33;
+  animation: sideBtnFloat 3s ease-in-out infinite;
+  transition: transform 0.2s, box-shadow 0.2s;
+  user-select: none;
+}
+.side-mute-btn:hover {
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 10px 40px #ff79c688;
+}
+.side-mute-icon { font-size: 1.5rem; line-height: 1; }
+@keyframes sideBtnFloat {
+  0%, 100% { box-shadow: 0 6px 28px #ffffff33; }
+  50%       { box-shadow: 0 10px 40px #ffffff55; }
+}
+
+/* Listen popup */
+.listen-popup {
+  position: fixed;
+  right: 4.5rem;
+  top: 50%;
+  transform: translateY(-50%) scale(0.85);
+  z-index: 7001;
+  background: linear-gradient(135deg, #bd93f9, #ff79c6);
+  color: #0a0a14;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 20px 20px 4px 20px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 6px 25px #bd93f966;
+}
+.listen-popup.show {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+@media (max-width: 600px) {
+  .side-mute-btn {
+    top: auto; bottom: 1.2rem;
+    transform: none;
+  }
+  .side-mute-btn:hover { transform: scale(1.12); }
+  .listen-popup {
+    right: auto; left: 50%;
+    top: auto; bottom: 5rem;
+    transform: translateX(-50%) scale(0.85);
+    border-radius: 20px;
+  }
+  .listen-popup.show { transform: translateX(-50%) scale(1); }
+}
+
+
 /* Scrollbar in modal */
 .modal-box::-webkit-scrollbar { width: 5px; }
 .modal-box::-webkit-scrollbar-track { background: transparent; }
@@ -931,3 +1002,503 @@ body {
     font-size: 0.58rem;
   }
 }
+
+/* ═══════════════════════════════════
+   H.H.I. SECTION
+   ═══════════════════════════════════ */
+
+.hhi-section {
+  padding: 5rem 2rem 4rem;
+  background: #070710;
+  position: relative;
+  overflow: hidden;
+}
+.hhi-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 50%, #ff79c608 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hhi-header { text-align: center; margin-bottom: 3rem; }
+
+.hhi-pre {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem; color: #ffffff55;
+  margin-bottom: 0.8rem; letter-spacing: 0.05em;
+}
+
+.hhi-title-wrap {
+  display: flex; justify-content: center; gap: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.hhi-letter {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(4rem, 12vw, 7rem);
+  display: inline-block;
+  animation: hhiGlow 2.5s ease-in-out infinite alternate;
+}
+.hhi-letter:nth-child(1) { color: #ff79c6; text-shadow: 0 0 30px #ff79c666; }
+.hhi-letter:nth-child(2) { color: #bd93f9; text-shadow: 0 0 30px #bd93f966; animation-delay: 0.4s; }
+.hhi-letter:nth-child(3) { color: #8be9fd; text-shadow: 0 0 30px #8be9fd66; animation-delay: 0.8s; }
+@keyframes hhiGlow {
+  from { filter: brightness(1); }
+  to   { filter: brightness(1.4) drop-shadow(0 0 18px currentColor); }
+}
+
+.hhi-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem; color: #ffffff77;
+  letter-spacing: 0.1em;
+}
+
+/* Grid */
+.hhi-grid {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 2rem;
+  max-width: 1000px; margin: 0 auto;
+  position: relative; z-index: 1;
+}
+
+/* Card */
+.hhi-card {
+  width: clamp(240px, 26vw, 300px);
+  border-radius: 20px;
+  background: #0f0f1a;
+  border: 1px solid #ffffff10;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.3s ease;
+}
+.hhi-card:hover { transform: translateY(-6px); }
+.hhi-helbin:hover  { border-color: #ff79c644; box-shadow: 0 16px 40px #ff79c622; }
+.hhi-harshini:hover{ border-color: #bd93f944; box-shadow: 0 16px 40px #bd93f922; }
+.hhi-izu:hover     { border-color: #8be9fd44; box-shadow: 0 16px 40px #8be9fd22; }
+
+/* Name row — always visible */
+.hhi-card-name {
+  padding: 1rem 1.4rem 0.7rem;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.5rem; text-align: center;
+  border-bottom: 1px solid #ffffff0e;
+}
+.hhi-helbin  .hhi-card-name { color: #ff79c6; }
+.hhi-harshini .hhi-card-name { color: #bd93f9; }
+.hhi-izu     .hhi-card-name { color: #8be9fd; }
+
+/* Card body — relative for overlay */
+.hhi-card-body { position: relative; flex: 1; }
+
+/* Blurred content */
+.hhi-blurred {
+  padding: 1.4rem 1.4rem 1.6rem;
+  display: flex; flex-direction: column; align-items: center; gap: 0.9rem;
+  filter: blur(6px);
+  user-select: none;
+  pointer-events: none;
+  transition: filter 0.5s ease;
+}
+.hhi-blurred.revealed {
+  filter: blur(0);
+  pointer-events: auto;
+  user-select: auto;
+}
+
+.hhi-avatar {
+  width: 58px; height: 58px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fredoka One', cursive; font-size: 1.6rem;
+}
+.ha-helbin   { background: #1a1a2e; border: 2px solid #ff79c6; color: #ff79c6; }
+.ha-harshini { background: #1a1a2e; border: 2px solid #bd93f9; color: #bd93f9; }
+.ha-izu      { background: #1a1a2e; border: 2px solid #8be9fd; color: #8be9fd; }
+
+.hhi-quote {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem; color: #ffffffaa;
+  text-align: center; font-style: italic; line-height: 1.5;
+}
+
+.hhi-tags-row { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; }
+.hhi-tag {
+  background: #ffffff08; border: 1px solid #ffffff12;
+  border-radius: 100px; padding: 0.3rem 0.75rem;
+  font-family: 'Nunito', sans-serif; font-size: 0.75rem; color: #ffffffcc;
+}
+
+/* Overlay — sits on top of blurred content */
+.hhi-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: #0f0f1a88;
+  backdrop-filter: blur(2px);
+  transition: opacity 0.4s ease;
+}
+.hhi-overlay.hidden { opacity: 0; pointer-events: none; }
+
+/* Reveal button (Helbin / Izu) */
+.hhi-reveal-btn {
+  background: linear-gradient(135deg, #ff79c6, #bd93f9);
+  color: #0a0a14; font-family: 'Fredoka One', cursive;
+  font-size: 1rem; border: none; border-radius: 100px;
+  padding: 0.7rem 1.8rem; cursor: pointer;
+  box-shadow: 0 6px 24px #bd93f944;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.hhi-reveal-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 10px 32px #bd93f966;
+}
+
+/* Harshini confirm button — shakes, changes text */
+.hhi-confirm-btn {
+  background: linear-gradient(135deg, #bd93f9, #ff79c6);
+  color: #0a0a14; font-family: 'Fredoka One', cursive;
+  font-size: 0.95rem; border: none; border-radius: 100px;
+  padding: 0.7rem 1.6rem; cursor: pointer;
+  box-shadow: 0 6px 24px #bd93f944;
+  transition: transform 0.2s, background 0.4s;
+}
+.hhi-confirm-btn:hover { transform: scale(1.05); }
+.hhi-confirm-btn.shake {
+  animation: btnShake 0.35s ease;
+}
+@keyframes btnShake {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-6px); }
+  40%     { transform: translateX(6px); }
+  60%     { transform: translateX(-4px); }
+  80%     { transform: translateX(4px); }
+}
+
+/* ═══════════════════════════════════
+   NIKYA SECTION
+   ═══════════════════════════════════ */
+
+.nikya-section {
+  padding: 5rem 2rem 5rem;
+  background: #04040c;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.nikya-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, #ffe66d06 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.nikya-forgot-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem; color: #ffffff55;
+  margin-bottom: 1.5rem; letter-spacing: 0.04em;
+  animation: nikyaFadeIn 1s ease both;
+}
+
+.nikya-n-wrap {
+  display: flex; justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.nikya-n-letter {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(5rem, 16vw, 9rem);
+  color: #ffe66d;
+  text-shadow: 0 0 40px #ffe66d88, 0 0 80px #ffe66d44;
+  display: inline-block;
+  animation: nikyaBounce 2s ease-in-out infinite;
+}
+@keyframes nikyaBounce {
+  0%,100% { transform: scale(1) rotate(-2deg); }
+  50%     { transform: scale(1.06) rotate(2deg); }
+}
+@keyframes nikyaFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.nikya-fullname {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2rem; color: #ffe66d;
+  margin-bottom: 2rem; letter-spacing: 0.05em;
+}
+
+.nikya-card {
+  display: inline-flex; flex-direction: column; align-items: center;
+  gap: 1rem;
+  background: #0f0f0a;
+  border: 1px solid #ffe66d22;
+  border-radius: 24px;
+  padding: 2rem 2.5rem;
+  max-width: 380px;
+  box-shadow: 0 8px 40px #ffe66d0e;
+  position: relative; z-index: 1;
+  animation: nikyaFadeIn 1.2s ease 0.3s both;
+}
+
+.nikya-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: #1a1a08; border: 2px solid #ffe66d;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.8rem; color: #ffe66d;
+}
+
+.nikya-quote {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem; color: #ffffffaa;
+  font-style: italic; line-height: 1.6; text-align: center;
+}
+
+.nikya-tags-row { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; }
+.nikya-tag {
+  background: #ffe66d0e; border: 1px solid #ffe66d22;
+  border-radius: 100px; padding: 0.3rem 0.8rem;
+  font-family: 'Nunito', sans-serif; font-size: 0.78rem; color: #ffe66dcc;
+}
+
+/* ═══════════════════════════════════
+   HHI PHOTO FRAMES & LIGHTBOX
+   ═══════════════════════════════════ */
+
+.hhi-photo-frame {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.hhi-photo-frame:hover { transform: scale(1.08); }
+
+/* Color rings per person */
+.hpf-helbin  { border: 3px solid #ff79c6; box-shadow: 0 0 18px #ff79c644; }
+.hpf-harshini{ border: 3px solid #bd93f9; box-shadow: 0 0 18px #bd93f944; }
+.hpf-izu     { border: 3px solid #8be9fd; box-shadow: 0 0 18px #8be9fd44; }
+.hpf-nikya   { border: 3px solid #ffe66d; box-shadow: 0 0 18px #ffe66d44; }
+
+.hhi-photo {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+/* Placeholder shown when no image */
+.hhi-photo-placeholder {
+  width: 100%; height: 100%;
+  display: none; /* shown via onerror */
+  flex-direction: column;
+  align-items: center; justify-content: center;
+  background: #1a1a2e;
+  font-family: 'Fredoka One', cursive;
+  font-size: 2.2rem;
+  gap: 0.1rem;
+}
+.hpf-helbin  .hhi-photo-placeholder { color: #ff79c6; }
+.hpf-harshini .hhi-photo-placeholder { color: #bd93f9; }
+.hpf-izu     .hhi-photo-placeholder { color: #8be9fd; }
+
+.hhi-ph-hint {
+  font-size: 0.55rem;
+  font-family: 'Nunito', sans-serif;
+  opacity: 0.6; letter-spacing: 0.02em;
+}
+
+/* Pop animation when card is revealed */
+.hhi-blurred.revealed .hhi-photo-frame {
+  animation: photoPop 0.55s cubic-bezier(.17,.67,.35,1.5) both;
+}
+@keyframes photoPop {
+  0%   { transform: scale(0) rotate(-10deg); opacity: 0; }
+  70%  { transform: scale(1.15) rotate(3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg);  opacity: 1; }
+}
+
+/* Nikya photo frame in card */
+.nikya-card .hhi-photo-frame {
+  width: 100px; height: 100px;
+  animation: photoPop 0.6s cubic-bezier(.17,.67,.35,1.5) 0.3s both;
+}
+
+/* ── Lightbox ── */
+.photo-lightbox {
+  position: fixed; inset: 0;
+  background: #000000cc;
+  backdrop-filter: blur(10px);
+  z-index: 99999;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.photo-lightbox.open {
+  opacity: 1; pointer-events: auto;
+}
+
+.lightbox-close {
+  position: absolute; top: 1.2rem; right: 1.4rem;
+  background: #ffffff22; border: none; color: #fff;
+  font-size: 1.4rem; width: 40px; height: 40px;
+  border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.lightbox-close:hover { background: #ffffff44; }
+
+.lightbox-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  max-width: 90vw; max-height: 90vh;
+  animation: lightboxPop 0.4s cubic-bezier(.17,.67,.35,1.3) both;
+}
+@keyframes lightboxPop {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.lightbox-img {
+  max-width: 80vw; max-height: 75vh;
+  border-radius: 16px;
+  object-fit: contain;
+  box-shadow: 0 20px 60px #00000088;
+  border: 2px solid #ffffff22;
+}
+
+.lightbox-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.4rem; color: #fff;
+  letter-spacing: 0.05em;
+}
+
+/* ═══════════════════════════════════
+   COLORFUL HHI CARD OVERRIDES
+   ═══════════════════════════════════ */
+
+/* Card backgrounds with color tint */
+.hhi-helbin  { background: linear-gradient(160deg, #1a0d14 0%, #0f0f1a 60%); }
+.hhi-harshini{ background: linear-gradient(160deg, #120d1a 0%, #0f0f1a 60%); }
+.hhi-izu     { background: linear-gradient(160deg, #0d1419 0%, #0f0f1a 60%); }
+
+/* Quotes colored per person */
+.hhi-helbin  .hhi-quote { color: #ff79c6cc; }
+.hhi-harshini .hhi-quote { color: #bd93f9cc; }
+.hhi-izu     .hhi-quote { color: #8be9fdcc; }
+
+/* Tags colored per person */
+.hhi-helbin  .hhi-tag { background: #ff79c611; border-color: #ff79c633; color: #ff79c6dd; }
+.hhi-harshini .hhi-tag { background: #bd93f911; border-color: #bd93f933; color: #bd93f9dd; }
+.hhi-izu     .hhi-tag { background: #8be9fd11; border-color: #8be9fd33; color: #8be9fddd; }
+
+/* Harshini click counter */
+.harshini-counter {
+  position: absolute; top: 0.7rem; right: 0.9rem;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.9rem; color: #bd93f9aa;
+  background: #bd93f911; border-radius: 100px;
+  padding: 0.15rem 0.6rem;
+}
+
+/* Harshini overlay re-layout for counter + button */
+#overlayHarshini {
+  flex-direction: column; gap: 0.8rem;
+  padding: 1rem;
+  position: relative;
+}
+
+/* Harshini button colors shift per step via JS class */
+.hhi-confirm-btn.angry {
+  background: linear-gradient(135deg, #ff6b6b, #ff4444);
+}
+
+/* ═══════════════════════════════════
+   FORCE ALL TEXT WHITE (no extra colors)
+   Animations & backgrounds untouched.
+   ═══════════════════════════════════ */
+
+/* Hero title words — remove gradients, set white */
+.word-riyon,
+.word-beautiful,
+.word-ass {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Hero acronym letters */
+.acro-letter, .acro-a, .acro-s, .acro-s2 {
+  color: #ffffff !important;
+}
+
+/* General body text */
+.hero-sub,
+.badge-text,
+.hero-acronym,
+.section-title,
+.section-sub,
+.gratitude-text h2,
+.gratitude-text p,
+.gratitude-sig,
+.group-title,
+.group-caption,
+.group-photo-label,
+.group-photo-hint,
+.group-photo-hint code,
+.footer-text,
+.footer-sub,
+.loader-intro,
+.ass-subtitle,
+.loader-hint { color: #ffffff !important; }
+
+/* Friend cards */
+.card-name,
+.card-teaser,
+.card-click-hint,
+.tag { color: #ffffff !important; }
+
+/* Modals */
+.modal-name,
+.modal-tag,
+.modal-stars,
+.info-card h4,
+.info-card p,
+.modal-joke-box p,
+.modal-tag-chip,
+.modal-photo-placeholder p,
+.modal-photo-placeholder code { color: #ffffff !important; }
+
+
+/* HHI section */
+.hhi-pre,
+.hhi-subtitle,
+.hhi-letter,
+.hhi-card-name,
+.hhi-quote,
+.hhi-tag,
+.hhi-ph-hint,
+.harshini-counter { color: #ffffff !important; }
+
+/* HHI letter glow — keep white glow */
+.hhi-letter:nth-child(1),
+.hhi-letter:nth-child(2),
+.hhi-letter:nth-child(3) {
+  color: #ffffff !important;
+  text-shadow: 0 0 30px #ffffff66 !important;
+}
+
+/* HHI avatar initials */
+.ha-helbin,
+.ha-harshini,
+.ha-izu { color: #ffffff !important; }
+
+/* Nikya section */
+.nikya-forgot-text,
+.nikya-n-letter,
+.nikya-fullname,
+.nikya-quote,
+.nikya-tag { color: #ffffff !important; }
+.nikya-n-letter { text-shadow: 0 0 40px #ffffff66, 0 0 80px #ffffff22 !important; }
+
+/* Lightbox */
+.lightbox-name { color: #ffffff !important; }
+

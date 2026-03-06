@@ -86,6 +86,16 @@
       </div>
     </section>
 
+    <!-- SIDE MUTE BUTTON -->
+    <div class="side-mute-btn" id="sideMuteBtn" title="Music is playing">
+      <span class="side-mute-icon">🎵</span>
+    </div>
+
+    <!-- LISTEN POPUP -->
+    <div class="listen-popup" id="listenPopup">
+      <span>🎧 listen to it please 🎧</span>
+    </div>
+
     <!-- CARDS SECTION -->
     <section class="cards-section" id="cardsSection">
       <h2 class="section-title">Click Each Legend to Reveal Their Story</h2>
@@ -165,6 +175,7 @@
       </div>
     </section>
 
+
     <!-- GROUP PHOTO SECTION -->
     <section class="group-section">
       <div class="group-inner">
@@ -182,6 +193,108 @@
           <!-- Uncomment and add your photo: <img src="img/group.jpg" alt="The ASS Squad" /> -->
         </div>
         <p class="group-caption">"Together we are Riyon's most beautiful A.S.S."</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════ H.H.I. SECTION ═══════════════ -->
+    <section class="hhi-section" id="hhiSection">
+      <div class="hhi-header">
+        <p class="hhi-pre">...and there's also 👀</p>
+        <div class="hhi-title-wrap">
+          <span class="hhi-letter" data-color="#ff79c6">H</span>
+          <span class="hhi-letter" data-color="#bd93f9">H</span>
+          <span class="hhi-letter" data-color="#8be9fd">I</span>
+        </div>
+        <p class="hhi-subtitle">Helbin &nbsp;·&nbsp; Harshini &nbsp;·&nbsp; Izu</p>
+      </div>
+
+      <div class="hhi-grid">
+
+        <!-- HELBIN -->
+        <div class="hhi-card hhi-helbin">
+          <div class="hhi-card-name">Helbin</div>
+          <div class="hhi-card-body">
+            <div class="hhi-blurred" id="blurHelbin">
+              <div class="hhi-photo-frame hpf-helbin" onclick="openPhotoPopup('img/2.jpg','Helbin')">
+                <img src="img/2.jpg" alt="Helbin" class="hhi-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="hhi-photo-placeholder">H<span class="hhi-ph-hint">📸 tap to view</span></div>
+              </div>
+              <p class="hhi-quote">"Helbin — the H that started the whole H.H.I. saga."</p>
+              <div class="hhi-tags-row">
+                <span class="hhi-tag">🌟 Good Vibes</span>
+                <span class="hhi-tag">💫 Solid Legend</span>
+              </div>
+            </div>
+            <div class="hhi-overlay" id="overlayHelbin">
+              <button class="hhi-reveal-btn" onclick="revealHhi('helbin')">👀 Tap to Reveal</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- HARSHINI -->
+        <div class="hhi-card hhi-harshini">
+          <div class="hhi-card-name">Harshini</div>
+          <div class="hhi-card-body">
+            <div class="hhi-blurred" id="blurHarshini">
+              <div class="hhi-photo-frame hpf-harshini" onclick="openPhotoPopup('img/harshini.jpg','Harshini')">
+                <img src="img/harshini.jpg" alt="Harshini" class="hhi-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="hhi-photo-placeholder">H<span class="hhi-ph-hint">📸 tap to view</span></div>
+              </div>
+              <p class="hhi-quote">"Harshini walked in and everyone's day got 10× better."</p>
+              <div class="hhi-tags-row">
+                <span class="hhi-tag">✨ Pure Sunshine</span>
+                <span class="hhi-tag">💕 Sweetheart</span>
+              </div>
+            </div>
+            <div class="hhi-overlay" id="overlayHarshini">
+              <div class="harshini-counter" id="harshiniCounter">0/10</div>
+              <button class="hhi-confirm-btn" id="harshiniBtn" onclick="stepHarshini()">no click here</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- IZU -->
+        <div class="hhi-card hhi-izu">
+          <div class="hhi-card-name">Izu</div>
+          <div class="hhi-card-body">
+            <div class="hhi-blurred" id="blurIzu">
+              <div class="hhi-photo-frame hpf-izu" onclick="openPhotoPopup('img/izu.jpg','Izu')">
+                <img src="img/izu.jpg" alt="Izu" class="hhi-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="hhi-photo-placeholder">I<span class="hhi-ph-hint">📸 tap to view</span></div>
+              </div>
+              <p class="hhi-quote">"Intensity. Insanity. Iconic. The I in H.H.I."</p>
+              <div class="hhi-tags-row">
+                <span class="hhi-tag">⚡ Unstoppable</span>
+                <span class="hhi-tag">🔥 Always Lit</span>
+              </div>
+            </div>
+            <div class="hhi-overlay" id="overlayIzu">
+              <button class="hhi-reveal-btn" onclick="revealHhi('izu')">👀 Tap to Reveal</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════ NIKYA SECTION ═══════════════ -->
+    <section class="nikya-section" id="nikyaSection">
+      <p class="nikya-forgot-text">oh wait... almost forgot you bro 😅</p>
+      <div class="nikya-n-wrap">
+        <span class="nikya-n-letter">N</span>
+      </div>
+      <p class="nikya-fullname">Nikya</p>
+      <div class="nikya-card">
+        <div class="hhi-photo-frame hpf-nikya" onclick="openPhotoPopup('img/nikya.jpg','Nikya')">
+          <img src="img/nikya.jpg" alt="Nikya" class="hhi-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="hhi-photo-placeholder">N<span class="hhi-ph-hint">📸 tap to view</span></div>
+        </div>
+        <p class="nikya-quote">"Nikya — fashionably late to the tribute, never late to the party."</p>
+        <div class="nikya-tags-row">
+          <span class="nikya-tag">😂 Late Entry</span>
+          <span class="nikya-tag">💎 Still a Legend</span>
+          <span class="nikya-tag">🎉 Honorary Member</span>
+        </div>
       </div>
     </section>
 
@@ -205,8 +318,7 @@
       <div class="modal-header">
         <div class="modal-avatar-wrap">
           <div class="modal-avatar ali-modal-avatar">
-            <!-- Replace with: <img src="img/ali.jpg" alt="Ali"> -->
-            <div class="modal-initials">A</div>
+            <img src="img/ali.jpg" alt="Ali" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
           </div>
           <div class="modal-avatar-glow glow-ali-modal"></div>
         </div>
@@ -246,10 +358,6 @@
           </div>
         </div>
 
-        <div class="modal-photo-placeholder">
-          <p>🖼️ Add Ali's photo → <code>img/ali.jpg</code></p>
-        </div>
-
         <div class="modal-tags-row">
           <span class="modal-tag-chip">🔥 Vibe Master</span>
           <span class="modal-tag-chip">😂 Comedian</span>
@@ -267,8 +375,7 @@
       <div class="modal-header">
         <div class="modal-avatar-wrap">
           <div class="modal-avatar siddharth-modal-avatar">
-            <!-- Replace with: <img src="img/siddharth.jpg" alt="Siddharth"> -->
-            <div class="modal-initials">S</div>
+            <img src="img/siddharth.jpg" alt="Siddharth" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
           </div>
           <div class="modal-avatar-glow glow-siddharth-modal"></div>
         </div>
@@ -308,10 +415,6 @@
           </div>
         </div>
 
-        <div class="modal-photo-placeholder">
-          <p>🖼️ Add Siddharth's photo → <code>img/siddharth.jpg</code></p>
-        </div>
-
         <div class="modal-tags-row">
           <span class="modal-tag-chip">🧠 Big Brain</span>
           <span class="modal-tag-chip">💡 The Planner</span>
@@ -329,8 +432,7 @@
       <div class="modal-header">
         <div class="modal-avatar-wrap">
           <div class="modal-avatar satyam-modal-avatar">
-            <!-- Replace with: <img src="img/satyam.jpg" alt="Satyam"> -->
-            <div class="modal-initials">S</div>
+            <img src="img/1.jpg" alt="Satyam" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
           </div>
           <div class="modal-avatar-glow glow-satyam-modal"></div>
         </div>
@@ -370,9 +472,6 @@
           </div>
         </div>
 
-        <div class="modal-photo-placeholder">
-          <p>🖼️ Add Satyam's photo → <code>img/satyam.jpg</code></p>
-        </div>
 
         <div class="modal-tags-row">
           <span class="modal-tag-chip">🚀 The Energy</span>
@@ -381,6 +480,15 @@
           <span class="modal-tag-chip">🔥 Hype Machine</span>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ PHOTO LIGHTBOX ═══════════════ -->
+  <div class="photo-lightbox" id="photoLightbox" onclick="closePhotoPopup()">
+    <button class="lightbox-close" onclick="closePhotoPopup()">✕</button>
+    <div class="lightbox-inner" onclick="event.stopPropagation()">
+      <img src="" alt="" id="lightboxImg" class="lightbox-img">
+      <p class="lightbox-name" id="lightboxName"></p>
     </div>
   </div>
 
