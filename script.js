@@ -37,31 +37,40 @@ function cycleAssLetterFonts() {
     "'Fredoka One', cursive",
   ];
 
+  const discoColors = [
+    '#ff0000','#ff4400','#ff8800','#ffcc00','#ffff00',
+    '#88ff00','#00ff44','#00ffcc','#00ccff','#0066ff',
+    '#6600ff','#cc00ff','#ff00cc','#ff0066',
+    '#ff6b6b','#4ecdc4','#ffe66d','#bd93f9','#ff79c6','#8be9fd',
+  ];
+
   const letters = document.querySelectorAll('.ass-letter');
 
   letters.forEach((letter, idx) => {
-    // Start cycling after each letter's pop-in delay (1.0s, 1.3s, 1.6s)
     const startDelay = 1000 + idx * 300;
     setTimeout(() => {
       let cycle = 0;
-      const totalCycles = wildFonts.length * 2; // run through the list twice fast
+      const totalCycles = wildFonts.length * 2;
       const intervalMs = 80;
 
       letter.style.display = 'inline-block';
 
       const timer = setInterval(() => {
         const font = wildFonts[cycle % wildFonts.length];
+        const color = discoColors[Math.floor(Math.random() * discoColors.length)];
         letter.style.fontFamily = font;
+        letter.style.color = color;
+        letter.style.textShadow = `0 0 30px ${color}, 0 0 60px ${color}88`;
 
-        // Add a little scale bounce on each switch
         letter.style.transform = `scale(${1 + Math.random() * 0.25}) rotate(${(Math.random() - 0.5) * 10}deg)`;
 
         cycle++;
 
         if (cycle >= totalCycles) {
           clearInterval(timer);
-          // Land on Fredoka One with satisfying pop
           letter.style.fontFamily = "'Fredoka One', cursive";
+          letter.style.color = '#ffffff';
+          letter.style.textShadow = '0 0 40px #ffffff88';
           letter.style.transform = 'scale(1.15) rotate(0deg)';
           setTimeout(() => {
             letter.style.transform = 'scale(1) rotate(0deg)';
@@ -404,6 +413,41 @@ siteObserver.observe(document.getElementById('mainSite'), { attributes: true, at
     setMuteState(!isMuted);
     if (!isMuted && audio.paused) audio.play().catch(() => {});
     if (!isMuted) spawnMusicNotes();
+  });
+})();
+
+/* ─── Click anywhere → random emoji pop ─── */
+(function initClickEmoji() {
+  const emojiPopStyle = document.createElement('style');
+  emojiPopStyle.textContent = `
+    @keyframes emojiPopUp {
+      0%   { transform: translate(-50%, -50%) scale(0) rotate(-20deg); opacity: 1; }
+      50%  { transform: translate(-50%, -120%) scale(1.4) rotate(10deg); opacity: 1; }
+      100% { transform: translate(-50%, -220%) scale(0.8) rotate(5deg); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(emojiPopStyle);
+
+  const pool = ['🍻','🍆','🍑'];
+
+  document.addEventListener('click', (e) => {
+    const tag = e.target.tagName.toLowerCase();
+    if (['button','a','input','select','textarea'].includes(tag)) return;
+    if (e.target.closest('.friend-card,.modal-box,.music-btn,.meet-btn,.scroll-arrow')) return;
+
+    const el = document.createElement('span');
+    el.textContent = pool[Math.floor(Math.random() * pool.length)];
+    el.style.cssText = `
+      position: fixed;
+      left: ${e.clientX}px;
+      top: ${e.clientY}px;
+      font-size: 2.4rem;
+      pointer-events: none;
+      z-index: 99999;
+      animation: emojiPopUp 0.75s cubic-bezier(.17,.67,.35,1.4) forwards;
+    `;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 800);
   });
 })();
 
