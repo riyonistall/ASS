@@ -183,8 +183,6 @@ const modalMap = {
   ali:        'modalAli',
   siddharth:  'modalSiddharth',
   satyam:     'modalSatyam',
-  helbin:     'modalHelbin',
-  izu:        'modalIzu',
 };
 
 function openModal(id) {
@@ -247,8 +245,6 @@ function burstConfetti(id) {
     ali:       ['#ff6b6b','#ff9999','#ff4444','#ffffff'],
     siddharth: ['#4ecdc4','#88ffff','#00bfbf','#ffffff'],
     satyam:    ['#ffe66d','#fff0a0','#ffd000','#ffffff'],
-    helbin:    ['#bd93f9','#d0b0ff','#8860d0','#ffffff'],
-    izu:       ['#8be9fd','#aaf0ff','#50c7e8','#ffffff'],
   };
   const palette = colors[id] || ['#ffffff'];
 

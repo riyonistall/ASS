@@ -1502,33 +1502,3 @@ body {
 /* Lightbox */
 .lightbox-name { color: #ffffff !important; }
 
-/* ═══════════════════════════════════
-   HELBIN & IZU — CARDS + MODALS + SCORES
-   ═══════════════════════════════════ */
-
-/* ── Card hover glows ── */
-#cardHelbin:hover { box-shadow: 0 25px 60px #bd93f944; border-color: #bd93f9; }
-#cardIzu:hover    { box-shadow: 0 25px 60px #8be9fd44; border-color: #8be9fd; }
-
-.glow-helbin { background: radial-gradient(ellipse at top, #bd93f933 0%, transparent 65%); }
-.glow-izu    { background: radial-gradient(ellipse at top, #8be9fd33 0%, transparent 65%); }
-
-.ring-helbin { background: conic-gradient(#bd93f9, #fff4, #bd93f9); animation: ringSpinSid 4s linear infinite; }
-.ring-izu    { background: conic-gradient(#8be9fd, #fff4, #8be9fd); animation: ringSpinAli 4s linear infinite; }
-
-.helbin-avatar { background: #111111; border: 2px solid #bd93f9; }
-.izu-avatar    { background: #111111; border: 2px solid #8be9fd; }
-
-.helbin-avatar .avatar-initials { color: #bd93f9; }
-.izu-avatar    .avatar-initials { color: #8be9fd; }
-
-/* ── Modals ── */
-.modal-helbin { border-top: 4px solid #bd93f9; }
-.modal-izu    { border-top: 4px solid #8be9fd; }
-
-.helbin-modal-avatar { background: #111; border: 3px solid #bd93f9; }
-.izu-modal-avatar    { background: #111; border: 3px solid #8be9fd; }
-
-.glow-helbin-modal { box-shadow: 0 0 25px 5px #bd93f966; }
-.glow-izu-modal    { box-shadow: 0 0 25px 5px #8be9fd66; }
-
