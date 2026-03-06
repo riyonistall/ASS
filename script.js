@@ -183,6 +183,8 @@ const modalMap = {
   ali:        'modalAli',
   siddharth:  'modalSiddharth',
   satyam:     'modalSatyam',
+  helbin:     'modalHelbin',
+  izu:        'modalIzu',
 };
 
 function openModal(id) {
@@ -245,6 +247,8 @@ function burstConfetti(id) {
     ali:       ['#ff6b6b','#ff9999','#ff4444','#ffffff'],
     siddharth: ['#4ecdc4','#88ffff','#00bfbf','#ffffff'],
     satyam:    ['#ffe66d','#fff0a0','#ffd000','#ffffff'],
+    helbin:    ['#bd93f9','#d0b0ff','#8860d0','#ffffff'],
+    izu:       ['#8be9fd','#aaf0ff','#50c7e8','#ffffff'],
   };
   const palette = colors[id] || ['#ffffff'];
 
@@ -430,6 +434,50 @@ function stepHarshini() {
     btn.textContent = 'okay fine!! 😤';
     btn.classList.remove('angry');
     setTimeout(() => revealHhi('harshini'), 500);
+  }
+}
+
+/* ─── Harshini Scoreboard 10-click unlock ─── */
+let harshiniScoreStep = 0;
+const harshiniScoreSteps = [
+  'are you sure? 🤨',
+  'really sure? 🙄',
+  'like actually sure? 😤',
+  'bro stop 🛑',
+  'WHY ARE YOU LIKE THIS 😠',
+  'okay... last warning 😏',
+  'she will be mad at you 👀',
+  'i am not responsible 😅',
+  'final answer?? 🫵',
+  // step 10 triggers reveal
+];
+function stepHarshiniScore() {
+  const btn     = document.getElementById('harshiniScoreBtn');
+  const counter = document.getElementById('harshiniScoreCounter');
+  if (!btn) return;
+
+  btn.classList.remove('shake');
+  void btn.offsetWidth;
+  btn.classList.add('shake');
+
+  harshiniScoreStep++;
+  if (counter) counter.textContent = `${harshiniScoreStep} / 10`;
+
+  btn.classList.toggle('angry', harshiniScoreStep >= 3 && harshiniScoreStep <= 5);
+
+  if (harshiniScoreStep <= harshiniScoreSteps.length) {
+    btn.textContent = harshiniScoreSteps[harshiniScoreStep - 1];
+  }
+
+  if (harshiniScoreStep >= 10) {
+    btn.textContent = 'FINE HERE 😤✨';
+    btn.classList.remove('angry');
+    setTimeout(() => {
+      const locked = document.getElementById('harshiniScoreLocked');
+      const stats  = document.getElementById('harshiniScoreStats');
+      if (locked) locked.style.display = 'none';
+      if (stats)  stats.style.display  = '';
+    }, 500);
   }
 }
 

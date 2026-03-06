@@ -172,6 +172,52 @@
           <div class="card-particles" id="satyamParticles"></div>
         </div>
 
+        <!-- HELBIN CARD -->
+        <div class="friend-card" id="cardHelbin" onclick="openModal('helbin')">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-glow glow-helbin"></div>
+              <div class="avatar-ring ring-helbin">
+                <div class="avatar helbin-avatar">
+                  <div class="avatar-initials">H</div>
+                  <div class="avatar-crown">🌟</div>
+                </div>
+              </div>
+              <h3 class="card-name">Helbin</h3>
+              <p class="card-teaser">The H in H.H.I.</p>
+              <div class="card-tags">
+                <span class="tag">🌟 Good Vibes</span>
+                <span class="tag">💫 Solid Legend</span>
+              </div>
+              <div class="card-click-hint">Click to reveal 👆</div>
+            </div>
+          </div>
+          <div class="card-particles" id="helbinParticles"></div>
+        </div>
+
+        <!-- IZU CARD -->
+        <div class="friend-card" id="cardIzu" onclick="openModal('izu')">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-glow glow-izu"></div>
+              <div class="avatar-ring ring-izu">
+                <div class="avatar izu-avatar">
+                  <div class="avatar-initials">I</div>
+                  <div class="avatar-crown">⚡</div>
+                </div>
+              </div>
+              <h3 class="card-name">Izu</h3>
+              <p class="card-teaser">The I in H.H.I.</p>
+              <div class="card-tags">
+                <span class="tag">⚡ Unstoppable</span>
+                <span class="tag">🔥 Always Lit</span>
+              </div>
+              <div class="card-click-hint">Click to reveal 👆</div>
+            </div>
+          </div>
+          <div class="card-particles" id="izuParticles"></div>
+        </div>
+
       </div>
     </section>
 
@@ -230,6 +276,66 @@
             <div class="stat-row"><span class="stat-label">IQ</span><span class="stat-value">200 on a Bad Day</span></div>
             <div class="stat-row"><span class="stat-label">Drinking Capacity</span><span class="stat-value">Bottomless Pit</span></div>
             <div class="stat-row"><span class="stat-label">Funny</span><span class="stat-value">Uncontrollable Laughs</span></div>
+          </div>
+        </div>
+
+        <!-- HELBIN SCORE CARD -->
+        <div class="score-card score-helbin">
+          <div class="score-card-header">
+            <div class="score-avatar score-avatar-helbin">H</div>
+            <h3 class="score-name">Helbin</h3>
+            <span class="score-crown">🌟</span>
+          </div>
+          <div class="score-stats">
+            <div class="stat-row"><span class="stat-label">Personality</span><span class="stat-value">Warmth Overloaded</span></div>
+            <div class="stat-row"><span class="stat-label">Looks</span><span class="stat-value">Naturally Glowing</span></div>
+            <div class="stat-row"><span class="stat-label">Tharkiness</span><span class="stat-value">Subtly Dangerous</span></div>
+            <div class="stat-row"><span class="stat-label">IQ</span><span class="stat-value">Quietly Brilliant</span></div>
+            <div class="stat-row"><span class="stat-label">Drinking Capacity</span><span class="stat-value">Mystery Level</span></div>
+            <div class="stat-row"><span class="stat-label">Funny</span><span class="stat-value">Sneaky Hilarious</span></div>
+          </div>
+        </div>
+
+        <!-- HARSHINI SCORE CARD — 10-click unlock -->
+        <div class="score-card score-harshini" id="harshiniScoreCard">
+          <div class="score-card-header">
+            <div class="score-avatar score-avatar-harshini">H</div>
+            <h3 class="score-name">Harshini</h3>
+            <span class="score-crown">✨</span>
+          </div>
+          <!-- Locked state -->
+          <div id="harshiniScoreLocked">
+            <div class="harshini-score-locked-body">
+              <p class="harshini-lock-msg">🔒 These stats are protected by Harshini herself</p>
+              <button class="harshini-score-btn" id="harshiniScoreBtn" onclick="stepHarshiniScore()">Reveal her stats? 👀</button>
+              <p class="harshini-score-counter" id="harshiniScoreCounter">0 / 10</p>
+            </div>
+          </div>
+          <!-- Revealed state (hidden until 10 clicks) -->
+          <div class="score-stats" id="harshiniScoreStats" style="display:none">
+            <div class="stat-row"><span class="stat-label">Personality</span><span class="stat-value">Pure Sunshine</span></div>
+            <div class="stat-row"><span class="stat-label">Looks</span><span class="stat-value">Stop Traffic Level</span></div>
+            <div class="stat-row"><span class="stat-label">Tharkiness</span><span class="stat-value">Innocently Lethal</span></div>
+            <div class="stat-row"><span class="stat-label">IQ</span><span class="stat-value">Smarter Than She Lets On</span></div>
+            <div class="stat-row"><span class="stat-label">Drinking Capacity</span><span class="stat-value">Classified 🤫</span></div>
+            <div class="stat-row"><span class="stat-label">Funny</span><span class="stat-value">Accidentally Comedy</span></div>
+          </div>
+        </div>
+
+        <!-- IZU SCORE CARD -->
+        <div class="score-card score-izu">
+          <div class="score-card-header">
+            <div class="score-avatar score-avatar-izu">I</div>
+            <h3 class="score-name">Izu</h3>
+            <span class="score-crown">⚡</span>
+          </div>
+          <div class="score-stats">
+            <div class="stat-row"><span class="stat-label">Personality</span><span class="stat-value">Intensity Incarnate</span></div>
+            <div class="stat-row"><span class="stat-label">Looks</span><span class="stat-value">Intimidatingly Good</span></div>
+            <div class="stat-row"><span class="stat-label">Tharkiness</span><span class="stat-value">Laser Focused</span></div>
+            <div class="stat-row"><span class="stat-label">IQ</span><span class="stat-value">Built Different</span></div>
+            <div class="stat-row"><span class="stat-label">Drinking Capacity</span><span class="stat-value">Goes Hard Always</span></div>
+            <div class="stat-row"><span class="stat-label">Funny</span><span class="stat-value">Savage One-Liners</span></div>
           </div>
         </div>
 
@@ -552,6 +658,130 @@
           <span class="modal-tag-chip">💪 MVP</span>
           <span class="modal-tag-chip">⚡ Unstoppable</span>
           <span class="modal-tag-chip">🔥 Hype Machine</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HELBIN MODAL -->
+  <div class="modal-overlay" id="modalHelbin" onclick="closeModal('helbin')">
+    <div class="modal-box modal-helbin" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('helbin')">✕</button>
+      <div class="modal-header">
+        <div class="modal-avatar-wrap">
+          <div class="modal-avatar helbin-modal-avatar">
+            <!-- Replace with: <img src="img/helbin.jpg" alt="Helbin"> -->
+            <div class="modal-initials">H</div>
+          </div>
+          <div class="modal-avatar-glow glow-helbin-modal"></div>
+        </div>
+        <div class="modal-title-wrap">
+          <h2 class="modal-name">Helbin</h2>
+          <p class="modal-tag">The H in H.H.I. 🌟</p>
+          <div class="modal-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-joke-box">
+          <p>🌟 "Helbin walked in and suddenly the whole group had more heart."</p>
+        </div>
+
+        <div class="modal-info-grid">
+          <div class="info-card">
+            <div class="info-icon">💼</div>
+            <div>
+              <h4>What Helbin Does</h4>
+              <p>The kind of person who makes everyone feel welcome without even trying. Just naturally radiates good energy.</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">🏆</div>
+            <div>
+              <h4>Superpower</h4>
+              <p>Can turn any awkward situation into a chill moment. The unofficial peacekeeper and vibe protector of the group.</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">💎</div>
+            <div>
+              <h4>Riyon says...</h4>
+              <p>Helbin, you're genuinely one of the most wholesome people I know. The H.H.I. wouldn't be the same without you. Glad you're in the crew! 🤝</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-photo-placeholder">
+          <p>🖼️ Add Helbin's photo → <code>img/helbin.jpg</code></p>
+        </div>
+
+        <div class="modal-tags-row">
+          <span class="modal-tag-chip">🌟 Good Vibes</span>
+          <span class="modal-tag-chip">💫 Solid Legend</span>
+          <span class="modal-tag-chip">🤝 Real One</span>
+          <span class="modal-tag-chip">❤️ Heart of Gold</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IZU MODAL -->
+  <div class="modal-overlay" id="modalIzu" onclick="closeModal('izu')">
+    <div class="modal-box modal-izu" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('izu')">✕</button>
+      <div class="modal-header">
+        <div class="modal-avatar-wrap">
+          <div class="modal-avatar izu-modal-avatar">
+            <!-- Replace with: <img src="img/izu.jpg" alt="Izu"> -->
+            <div class="modal-initials">I</div>
+          </div>
+          <div class="modal-avatar-glow glow-izu-modal"></div>
+        </div>
+        <div class="modal-title-wrap">
+          <h2 class="modal-name">Izu</h2>
+          <p class="modal-tag">The I in H.H.I. ⚡</p>
+          <div class="modal-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-joke-box">
+          <p>⚡ "Intensity. Insanity. Iconic. That's Izu in three words."</p>
+        </div>
+
+        <div class="modal-info-grid">
+          <div class="info-card">
+            <div class="info-icon">💼</div>
+            <div>
+              <h4>What Izu Does</h4>
+              <p>Lives at 100% all the time. No half-measures, no chill mode — just pure unfiltered energy from morning to night.</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">🏆</div>
+            <div>
+              <h4>Superpower</h4>
+              <p>Makes everyone around them want to level up. If Izu is doing it, you suddenly believe you can do it too.</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">💎</div>
+            <div>
+              <h4>Riyon says...</h4>
+              <p>Izu, you're literally the definition of unstoppable. Your energy is contagious and your loyalty is unmatched. Proud to call you crew! 🔥</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-photo-placeholder">
+          <p>🖼️ Add Izu's photo → <code>img/izu.jpg</code></p>
+        </div>
+
+        <div class="modal-tags-row">
+          <span class="modal-tag-chip">⚡ Unstoppable</span>
+          <span class="modal-tag-chip">🔥 Always Lit</span>
+          <span class="modal-tag-chip">💯 Full Send</span>
+          <span class="modal-tag-chip">🎯 No Excuses</span>
         </div>
       </div>
     </div>

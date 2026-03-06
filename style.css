@@ -1602,3 +1602,82 @@ body {
 
 /* Lightbox */
 .lightbox-name { color: #ffffff !important; }
+
+/* ═══════════════════════════════════
+   HELBIN & IZU — CARDS + MODALS + SCORES
+   ═══════════════════════════════════ */
+
+/* ── Card hover glows ── */
+#cardHelbin:hover { box-shadow: 0 25px 60px #bd93f944; border-color: #bd93f9; }
+#cardIzu:hover    { box-shadow: 0 25px 60px #8be9fd44; border-color: #8be9fd; }
+
+.glow-helbin { background: radial-gradient(ellipse at top, #bd93f933 0%, transparent 65%); }
+.glow-izu    { background: radial-gradient(ellipse at top, #8be9fd33 0%, transparent 65%); }
+
+.ring-helbin { background: conic-gradient(#bd93f9, #fff4, #bd93f9); animation: ringSpinSid 4s linear infinite; }
+.ring-izu    { background: conic-gradient(#8be9fd, #fff4, #8be9fd); animation: ringSpinAli 4s linear infinite; }
+
+.helbin-avatar { background: #111111; border: 2px solid #bd93f9; }
+.izu-avatar    { background: #111111; border: 2px solid #8be9fd; }
+
+.helbin-avatar .avatar-initials { color: #bd93f9; }
+.izu-avatar    .avatar-initials { color: #8be9fd; }
+
+/* ── Modals ── */
+.modal-helbin { border-top: 4px solid #bd93f9; }
+.modal-izu    { border-top: 4px solid #8be9fd; }
+
+.helbin-modal-avatar { background: #111; border: 3px solid #bd93f9; }
+.izu-modal-avatar    { background: #111; border: 3px solid #8be9fd; }
+
+.glow-helbin-modal { box-shadow: 0 0 25px 5px #bd93f966; }
+.glow-izu-modal    { box-shadow: 0 0 25px 5px #8be9fd66; }
+
+/* ── Score cards ── */
+.score-helbin:hover { box-shadow: 0 20px 50px #bd93f944; border-color: #bd93f955; }
+.score-izu:hover    { box-shadow: 0 20px 50px #8be9fd44; border-color: #8be9fd55; }
+.score-harshini:hover { box-shadow: 0 20px 50px #ff79c644; border-color: #ff79c655; }
+
+.score-helbin   .score-card-header { background: linear-gradient(135deg, #bd93f918, transparent); }
+.score-izu      .score-card-header { background: linear-gradient(135deg, #8be9fd18, transparent); }
+.score-harshini .score-card-header { background: linear-gradient(135deg, #ff79c618, transparent); }
+
+.score-avatar-helbin   { background: linear-gradient(135deg, #bd93f9, #8860d0); color: #fff; }
+.score-avatar-izu      { background: linear-gradient(135deg, #8be9fd, #50c7e8); color: #fff; }
+.score-avatar-harshini { background: linear-gradient(135deg, #ff79c6, #bd93f9); color: #fff; }
+
+/* ── Harshini score lock UI ── */
+.harshini-score-locked-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+}
+
+.harshini-lock-msg {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  text-align: center;
+  padding: 0 8px;
+}
+
+.harshini-score-btn {
+  background: linear-gradient(135deg, #ff79c6, #bd93f9);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.harshini-score-btn:hover { transform: scale(1.06); box-shadow: 0 6px 20px #ff79c655; }
+.harshini-score-btn.angry { background: linear-gradient(135deg, #ff6b6b, #ff4444); }
+
+.harshini-score-counter {
+  font-size: 0.75rem;
+  opacity: 0.55;
+  letter-spacing: 1px;
+}
