@@ -364,6 +364,38 @@ const siteObserver = new MutationObserver(() => {
 });
 siteObserver.observe(document.getElementById('mainSite'), { attributes: true, attributeFilter: ['class'] });
 
+/* ─── H.H.I. Card Reveal ─── */
+function revealHhi(name) {
+  const blur    = document.getElementById('blur'    + name.charAt(0).toUpperCase() + name.slice(1));
+  const overlay = document.getElementById('overlay' + name.charAt(0).toUpperCase() + name.slice(1));
+  if (!blur || !overlay) return;
+  blur.classList.add('revealed');
+  overlay.classList.add('hidden');
+}
+
+let harshiniStep = 0;
+const harshiniSteps = [
+  'your sure? 😏',
+  'are you really sure? 🤔',
+  'pakka sure bro? 🫵',
+];
+function stepHarshini() {
+  const btn = document.getElementById('harshiniBtn');
+  if (!btn) return;
+
+  // shake animation on each click
+  btn.classList.remove('shake');
+  void btn.offsetWidth; // reflow to restart animation
+  btn.classList.add('shake');
+
+  if (harshiniStep < harshiniSteps.length) {
+    btn.textContent = harshiniSteps[harshiniStep];
+    harshiniStep++;
+  } else {
+    revealHhi('harshini');
+  }
+}
+
 /* ─── Side Mute Button → "listen to it please" popup ─── */
 (function initSideMuteBtn() {
   const btn   = document.getElementById('sideMuteBtn');
