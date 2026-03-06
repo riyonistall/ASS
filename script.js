@@ -454,19 +454,22 @@ function stepHarshini() {
   if (!audio) return;
 
   audio.volume = 0.65;
-  audio.muted = true;
-  audio.play().catch(() => {});
+  const EVENTS = ['click','touchstart','keydown','scroll','pointerdown'];
 
-  // Unmute silently on first user interaction
-  function unmute() {
+  function ensurePlay() {
     audio.muted = false;
-    document.removeEventListener('click',      unmute);
-    document.removeEventListener('keydown',    unmute);
-    document.removeEventListener('touchstart', unmute);
+    if (audio.paused) audio.play().catch(() => {});
+    EVENTS.forEach(ev => document.removeEventListener(ev, ensurePlay));
   }
-  document.addEventListener('click',      unmute);
-  document.addEventListener('keydown',    unmute);
-  document.addEventListener('touchstart', unmute);
+
+  // Try unmuted first (works in some browsers)
+  audio.muted = false;
+  audio.play().catch(() => {
+    // Blocked → start muted, unmute on first gesture
+    audio.muted = true;
+    audio.play().catch(() => {});
+    EVENTS.forEach(ev => document.addEventListener(ev, ensurePlay, { passive: true }));
+  });
 })();
 
 /* ─── Click anywhere → random emoji pop ─── */

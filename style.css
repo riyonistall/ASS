@@ -1503,3 +1503,102 @@ body {
 .hhi-confirm-btn.angry {
   background: linear-gradient(135deg, #ff6b6b, #ff4444);
 }
+
+/* ═══════════════════════════════════
+   FORCE ALL TEXT WHITE (no extra colors)
+   Animations & backgrounds untouched.
+   ═══════════════════════════════════ */
+
+/* Hero title words — remove gradients, set white */
+.word-riyon,
+.word-beautiful,
+.word-ass {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Hero acronym letters */
+.acro-letter, .acro-a, .acro-s, .acro-s2 {
+  color: #ffffff !important;
+}
+
+/* General body text */
+.hero-sub,
+.badge-text,
+.hero-acronym,
+.section-title,
+.section-sub,
+.gratitude-text h2,
+.gratitude-text p,
+.gratitude-sig,
+.group-title,
+.group-caption,
+.group-photo-label,
+.group-photo-hint,
+.group-photo-hint code,
+.footer-text,
+.footer-sub,
+.loader-intro,
+.ass-subtitle,
+.loader-hint { color: #ffffff !important; }
+
+/* Friend cards */
+.card-name,
+.card-teaser,
+.card-click-hint,
+.tag { color: #ffffff !important; }
+
+/* Modals */
+.modal-name,
+.modal-tag,
+.modal-stars,
+.info-card h4,
+.info-card p,
+.modal-joke-box p,
+.modal-tag-chip,
+.modal-photo-placeholder p,
+.modal-photo-placeholder code { color: #ffffff !important; }
+
+/* Scoreboard */
+.score-name,
+.stat-label,
+.stat-value { color: #ffffff !important; }
+
+/* HHI section */
+.hhi-pre,
+.hhi-subtitle,
+.hhi-letter,
+.hhi-card-name,
+.hhi-quote,
+.hhi-tag,
+.hhi-ph-hint,
+.harshini-counter { color: #ffffff !important; }
+
+/* HHI letter glow — keep white glow */
+.hhi-letter:nth-child(1),
+.hhi-letter:nth-child(2),
+.hhi-letter:nth-child(3) {
+  color: #ffffff !important;
+  text-shadow: 0 0 30px #ffffff66 !important;
+}
+
+/* HHI avatar initials */
+.score-avatar-ali,
+.score-avatar-sid,
+.score-avatar-sat,
+.ha-helbin,
+.ha-harshini,
+.ha-izu { color: #ffffff !important; }
+
+/* Nikya section */
+.nikya-forgot-text,
+.nikya-n-letter,
+.nikya-fullname,
+.nikya-quote,
+.nikya-tag { color: #ffffff !important; }
+.nikya-n-letter { text-shadow: 0 0 40px #ffffff66, 0 0 80px #ffffff22 !important; }
+
+/* Lightbox */
+.lightbox-name { color: #ffffff !important; }
