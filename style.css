@@ -1463,3 +1463,43 @@ body {
   font-size: 1.4rem; color: #fff;
   letter-spacing: 0.05em;
 }
+
+/* ═══════════════════════════════════
+   COLORFUL HHI CARD OVERRIDES
+   ═══════════════════════════════════ */
+
+/* Card backgrounds with color tint */
+.hhi-helbin  { background: linear-gradient(160deg, #1a0d14 0%, #0f0f1a 60%); }
+.hhi-harshini{ background: linear-gradient(160deg, #120d1a 0%, #0f0f1a 60%); }
+.hhi-izu     { background: linear-gradient(160deg, #0d1419 0%, #0f0f1a 60%); }
+
+/* Quotes colored per person */
+.hhi-helbin  .hhi-quote { color: #ff79c6cc; }
+.hhi-harshini .hhi-quote { color: #bd93f9cc; }
+.hhi-izu     .hhi-quote { color: #8be9fdcc; }
+
+/* Tags colored per person */
+.hhi-helbin  .hhi-tag { background: #ff79c611; border-color: #ff79c633; color: #ff79c6dd; }
+.hhi-harshini .hhi-tag { background: #bd93f911; border-color: #bd93f933; color: #bd93f9dd; }
+.hhi-izu     .hhi-tag { background: #8be9fd11; border-color: #8be9fd33; color: #8be9fddd; }
+
+/* Harshini click counter */
+.harshini-counter {
+  position: absolute; top: 0.7rem; right: 0.9rem;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.9rem; color: #bd93f9aa;
+  background: #bd93f911; border-radius: 100px;
+  padding: 0.15rem 0.6rem;
+}
+
+/* Harshini overlay re-layout for counter + button */
+#overlayHarshini {
+  flex-direction: column; gap: 0.8rem;
+  padding: 1rem;
+  position: relative;
+}
+
+/* Harshini button colors shift per step via JS class */
+.hhi-confirm-btn.angry {
+  background: linear-gradient(135deg, #ff6b6b, #ff4444);
+}

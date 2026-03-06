@@ -395,24 +395,41 @@ function revealHhi(name) {
 
 let harshiniStep = 0;
 const harshiniSteps = [
-  'your sure? 😏',
-  'are you really sure? 🤔',
+  'seriously don\'t 🙄',
+  'bro i said no 😤',
+  'WHY ARE YOU STILL CLICKING 😠',
+  'i will not let you see 🛡️',
+  'okay... your sure? 😏',
+  'are you REALLY sure? 🤔',
+  'like actually sure? 😐',
   'pakka sure bro? 🫵',
+  'last chance to go back 😅',
+  // step 9 (index 9) triggers reveal
 ];
 function stepHarshini() {
-  const btn = document.getElementById('harshiniBtn');
+  const btn     = document.getElementById('harshiniBtn');
+  const counter = document.getElementById('harshiniCounter');
   if (!btn) return;
 
-  // shake animation on each click
   btn.classList.remove('shake');
-  void btn.offsetWidth; // reflow to restart animation
+  void btn.offsetWidth;
   btn.classList.add('shake');
 
-  if (harshiniStep < harshiniSteps.length) {
-    btn.textContent = harshiniSteps[harshiniStep];
-    harshiniStep++;
-  } else {
-    revealHhi('harshini');
+  harshiniStep++;
+
+  if (counter) counter.textContent = `${harshiniStep}/10`;
+
+  // angry red on steps 3–5
+  btn.classList.toggle('angry', harshiniStep >= 3 && harshiniStep <= 5);
+
+  if (harshiniStep <= harshiniSteps.length) {
+    btn.textContent = harshiniSteps[harshiniStep - 1];
+  }
+
+  if (harshiniStep >= 10) {
+    btn.textContent = 'okay fine!! 😤';
+    btn.classList.remove('angry');
+    setTimeout(() => revealHhi('harshini'), 500);
   }
 }
 
