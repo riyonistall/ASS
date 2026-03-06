@@ -5,6 +5,7 @@
 /* ─── Loader ─── */
 (function initLoader() {
   spawnLoaderParticles();
+  cycleAssLetterFonts();
 
   // After bar fills + small pause → switch to main site
   setTimeout(() => {
@@ -19,6 +20,57 @@
     }, 900);
   }, 5000); // 5s total loader time
 })();
+
+/* ─── ASS loader letter font cycling ─── */
+function cycleAssLetterFonts() {
+  const wildFonts = [
+    "'Bangers', cursive",
+    "'Lobster', cursive",
+    "'Press Start 2P', monospace",
+    "'Righteous', cursive",
+    "'Ultra', serif",
+    "'Black Ops One', cursive",
+    "'Creepster', cursive",
+    "'Monoton', cursive",
+    "'Russo One', sans-serif",
+    "'Boogaloo', cursive",
+    "'Fredoka One', cursive",
+  ];
+
+  const letters = document.querySelectorAll('.ass-letter');
+
+  letters.forEach((letter, idx) => {
+    // Start cycling after each letter's pop-in delay (1.0s, 1.3s, 1.6s)
+    const startDelay = 1000 + idx * 300;
+    setTimeout(() => {
+      let cycle = 0;
+      const totalCycles = wildFonts.length * 2; // run through the list twice fast
+      const intervalMs = 80;
+
+      letter.style.display = 'inline-block';
+
+      const timer = setInterval(() => {
+        const font = wildFonts[cycle % wildFonts.length];
+        letter.style.fontFamily = font;
+
+        // Add a little scale bounce on each switch
+        letter.style.transform = `scale(${1 + Math.random() * 0.25}) rotate(${(Math.random() - 0.5) * 10}deg)`;
+
+        cycle++;
+
+        if (cycle >= totalCycles) {
+          clearInterval(timer);
+          // Land on Fredoka One with satisfying pop
+          letter.style.fontFamily = "'Fredoka One', cursive";
+          letter.style.transform = 'scale(1.15) rotate(0deg)';
+          setTimeout(() => {
+            letter.style.transform = 'scale(1) rotate(0deg)';
+          }, 200);
+        }
+      }, intervalMs);
+    }, startDelay);
+  });
+}
 
 function spawnLoaderParticles() {
   const container = document.getElementById('particles');
