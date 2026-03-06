@@ -367,52 +367,22 @@ siteObserver.observe(document.getElementById('mainSite'), { attributes: true, at
 /* ─── Music Player ─── */
 (function initMusic() {
   const audio = document.getElementById('bgMusic');
-  const btn   = document.getElementById('musicBtn');
-  const icon  = document.getElementById('musicIcon');
-  const label = document.getElementById('musicLabel');
-
-  if (!audio || !btn) return;
+  if (!audio) return;
 
   audio.volume = 0.65;
-  let isMuted = true;
-
-  function setMuteState(muted) {
-    isMuted = muted;
-    audio.muted = muted;
-    icon.textContent  = muted ? '🔇' : '🎵';
-    label.textContent = muted ? 'UNMUTE' : 'MUTE';
-    btn.classList.toggle('muted', muted);
-  }
-
-  function removeGestureListeners() {
-    document.removeEventListener('click',      unmuteOnGesture);
-    document.removeEventListener('keydown',    unmuteOnGesture);
-    document.removeEventListener('touchstart', unmuteOnGesture);
-  }
-
-  // Start muted — browsers allow muted autoplay
   audio.muted = true;
   audio.play().catch(() => {});
-  setMuteState(true);
 
-  // Unmute on first user interaction, but skip clicks on the music button itself
-  function unmuteOnGesture(e) {
-    if (e && btn.contains(e.target)) return;
-    removeGestureListeners();
-    setMuteState(false);
-    spawnMusicNotes();
+  // Unmute silently on first user interaction
+  function unmute() {
+    audio.muted = false;
+    document.removeEventListener('click',      unmute);
+    document.removeEventListener('keydown',    unmute);
+    document.removeEventListener('touchstart', unmute);
   }
-  document.addEventListener('click',      unmuteOnGesture);
-  document.addEventListener('keydown',    unmuteOnGesture);
-  document.addEventListener('touchstart', unmuteOnGesture);
-
-  btn.addEventListener('click', () => {
-    removeGestureListeners();
-    const newMuted = !isMuted;
-    setMuteState(newMuted);
-    if (!newMuted && audio.paused) audio.play().catch(() => {});
-    if (!newMuted) spawnMusicNotes();
-  });
+  document.addEventListener('click',      unmute);
+  document.addEventListener('keydown',    unmute);
+  document.addEventListener('touchstart', unmute);
 })();
 
 /* ─── Click anywhere → random emoji pop ─── */
@@ -450,17 +420,3 @@ siteObserver.observe(document.getElementById('mainSite'), { attributes: true, at
   });
 })();
 
-function spawnMusicNotes() {
-  const wrap  = document.getElementById('musicBtnWrap');
-  const notes = ['🎵','🎶','🎤','🎸','🎧'];
-  for (let i = 0; i < 4; i++) {
-    const n = document.createElement('span');
-    n.className  = 'music-note-burst';
-    n.textContent = notes[Math.floor(Math.random() * notes.length)];
-    n.style.left = `${Math.random() * 60 - 10}px`;
-    n.style.top  = `${Math.random() * 20}px`;
-    n.style.animationDelay = `${i * 0.15}s`;
-    wrap.appendChild(n);
-    setTimeout(() => n.remove(), 1200);
-  }
-}
