@@ -5,20 +5,20 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ali-color:       #ff6b6b;
-  --ali-glow:        #ff6b6b88;
-  --sid-color:       #4ecdc4;
-  --sid-glow:        #4ecdc488;
-  --sat-color:       #ffe66d;
-  --sat-glow:        #ffe66d88;
+  --ali-color:       #ffffff;
+  --ali-glow:        #ffffff88;
+  --sid-color:       #ffffff;
+  --sid-glow:        #ffffff88;
+  --sat-color:       #ffffff;
+  --sat-glow:        #ffffff88;
   --dark-bg:         #000000;
   --darker-bg:       #000000;
   --card-bg:         #0f0f0f;
   --text-primary:    #ffffff;
-  --text-secondary:  #bbbbbb;
-  --accent-pink:     #ff79c6;
-  --accent-purple:   #bd93f9;
-  --accent-cyan:     #8be9fd;
+  --text-secondary:  #ffffff;
+  --accent-pink:     #ffffff;
+  --accent-purple:   #ffffff;
+  --accent-cyan:     #ffffff;
 }
 
 html { scroll-behavior: smooth; }
@@ -230,16 +230,16 @@ body {
 }
 
 .riyon-badge {
-  background: linear-gradient(135deg, #ff79c688, #bd93f988);
-  border: 1px solid #bd93f966;
+  background: #1a1a1a;
+  border: 1px solid #ffffff44;
   border-radius: 100px;
   padding: 0.4rem 1.4rem;
   backdrop-filter: blur(10px);
   animation: badgePulse 3s ease-in-out infinite;
 }
 @keyframes badgePulse {
-  0%, 100% { box-shadow: 0 0 0 0 #bd93f944; }
-  50%       { box-shadow: 0 0 0 10px #bd93f900; }
+  0%, 100% { box-shadow: 0 0 0 0 #ffffff44; }
+  50%       { box-shadow: 0 0 0 10px #ffffff00; }
 }
 
 .badge-text {
@@ -270,12 +270,10 @@ body {
   font-family: 'Fredoka One', cursive;
   font-weight: 400;
   font-size: clamp(4rem, 14vw, 10rem);
-  background: linear-gradient(135deg, var(--ali-color), var(--sid-color), var(--sat-color));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
   display: block;
   animation: wordAssZoom 0.9s cubic-bezier(.17,.67,.35,1.4) 0.8s both;
-  filter: drop-shadow(0 0 30px var(--sid-color));
+  filter: drop-shadow(0 0 30px #ffffff88);
 }
 
 @keyframes slideInLeft {
@@ -313,8 +311,9 @@ body {
 
 .meet-btn {
   position: relative; overflow: hidden;
-  background: linear-gradient(135deg, var(--ali-color), var(--sid-color));
-  color: #000000; font-family: 'Fredoka One', cursive;
+  background: #1a1a1a;
+  border: 1px solid #ffffff44;
+  color: #ffffff; font-family: 'Fredoka One', cursive;
   font-weight: 400; font-size: clamp(0.85rem, 2vw, 1.05rem);
   padding: 1rem 2.5rem; border: none;
   border-radius: 100px; cursor: pointer;
@@ -585,9 +584,7 @@ body {
 .group-title {
   font-family: 'Fredoka One', cursive;
   font-size: clamp(1.5rem, 4vw, 2.5rem);
-  background: linear-gradient(135deg, var(--ali-color), var(--sid-color), var(--sat-color));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
   margin-bottom: 2rem;
 }
 
@@ -848,15 +845,15 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-  background: linear-gradient(135deg, #bd93f9cc, #ff79c6cc);
-  border: 2px solid #ffffff33;
+  background: #1a1a1a;
+  border: 2px solid #ffffff44;
   border-radius: 20px;
   padding: 0.85rem 0.7rem;
   cursor: pointer;
   backdrop-filter: blur(12px);
   transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
-  box-shadow: 0 6px 28px #bd93f966;
-  color: #000000;
+  box-shadow: 0 6px 28px #ffffff44;
+  color: #ffffff;
   animation: musicBtnFloat 3s ease-in-out infinite;
 }
 
@@ -902,8 +899,8 @@ body {
 }
 
 @keyframes musicBtnFloat {
-  0%, 100% { box-shadow: 0 6px 28px #bd93f966; }
-  50%       { box-shadow: 0 10px 40px #ff79c688; }
+  0%, 100% { box-shadow: 0 6px 28px #ffffff44; }
+  50%       { box-shadow: 0 10px 40px #ffffff66; }
 }
 
 @keyframes musicNote {
