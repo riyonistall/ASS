@@ -364,6 +364,26 @@ const siteObserver = new MutationObserver(() => {
 });
 siteObserver.observe(document.getElementById('mainSite'), { attributes: true, attributeFilter: ['class'] });
 
+/* ─── Photo Lightbox ─── */
+function openPhotoPopup(src, name) {
+  const lb   = document.getElementById('photoLightbox');
+  const img  = document.getElementById('lightboxImg');
+  const label = document.getElementById('lightboxName');
+  if (!lb) return;
+  img.src = src; img.alt = name; label.textContent = name;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePhotoPopup() {
+  const lb = document.getElementById('photoLightbox');
+  if (!lb) return;
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closePhotoPopup();
+});
+
 /* ─── H.H.I. Card Reveal ─── */
 function revealHhi(name) {
   const blur    = document.getElementById('blur'    + name.charAt(0).toUpperCase() + name.slice(1));

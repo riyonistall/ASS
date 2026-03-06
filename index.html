@@ -275,7 +275,10 @@
           <div class="hhi-card-name">Helbin</div>
           <div class="hhi-card-body">
             <div class="hhi-blurred" id="blurHelbin">
-              <div class="hhi-avatar ha-helbin">H</div>
+              <div class="hhi-photo-frame hpf-helbin" onclick="openPhotoPopup('img/helbin.jpg','Helbin')">
+                <img src="img/helbin.jpg" alt="Helbin" class="hhi-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="hhi-photo-placeholder">H<span class="hhi-ph-hint">📸 tap to view</span></div>
+              </div>
               <p class="hhi-quote">"Helbin — the H that started the whole H.H.I. saga."</p>
               <div class="hhi-tags-row">
                 <span class="hhi-tag">🌟 Good Vibes</span>
@@ -293,7 +296,10 @@
           <div class="hhi-card-name">Harshini</div>
           <div class="hhi-card-body">
             <div class="hhi-blurred" id="blurHarshini">
-              <div class="hhi-avatar ha-harshini">H</div>
+              <div class="hhi-photo-frame hpf-harshini" onclick="openPhotoPopup('img/harshini.jpg','Harshini')">
+                <img src="img/harshini.jpg" alt="Harshini" class="hhi-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="hhi-photo-placeholder">H<span class="hhi-ph-hint">📸 tap to view</span></div>
+              </div>
               <p class="hhi-quote">"Harshini walked in and everyone's day got 10× better."</p>
               <div class="hhi-tags-row">
                 <span class="hhi-tag">✨ Pure Sunshine</span>
@@ -311,7 +317,10 @@
           <div class="hhi-card-name">Izu</div>
           <div class="hhi-card-body">
             <div class="hhi-blurred" id="blurIzu">
-              <div class="hhi-avatar ha-izu">I</div>
+              <div class="hhi-photo-frame hpf-izu" onclick="openPhotoPopup('img/izu.jpg','Izu')">
+                <img src="img/izu.jpg" alt="Izu" class="hhi-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="hhi-photo-placeholder">I<span class="hhi-ph-hint">📸 tap to view</span></div>
+              </div>
               <p class="hhi-quote">"Intensity. Insanity. Iconic. The I in H.H.I."</p>
               <div class="hhi-tags-row">
                 <span class="hhi-tag">⚡ Unstoppable</span>
@@ -335,7 +344,10 @@
       </div>
       <p class="nikya-fullname">Nikya</p>
       <div class="nikya-card">
-        <div class="nikya-avatar">N</div>
+        <div class="hhi-photo-frame hpf-nikya" onclick="openPhotoPopup('img/nikya.jpg','Nikya')">
+          <img src="img/nikya.jpg" alt="Nikya" class="hhi-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="hhi-photo-placeholder" style="border-color:#ffe66d;color:#ffe66d">N<span class="hhi-ph-hint">📸 tap to view</span></div>
+        </div>
         <p class="nikya-quote">"Nikya — fashionably late to the tribute, never late to the party."</p>
         <div class="nikya-tags-row">
           <span class="nikya-tag">😂 Late Entry</span>
@@ -541,6 +553,15 @@
           <span class="modal-tag-chip">🔥 Hype Machine</span>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ PHOTO LIGHTBOX ═══════════════ -->
+  <div class="photo-lightbox" id="photoLightbox" onclick="closePhotoPopup()">
+    <button class="lightbox-close" onclick="closePhotoPopup()">✕</button>
+    <div class="lightbox-inner" onclick="event.stopPropagation()">
+      <img src="" alt="" id="lightboxImg" class="lightbox-img">
+      <p class="lightbox-name" id="lightboxName"></p>
     </div>
   </div>
 
