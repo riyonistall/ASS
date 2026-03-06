@@ -285,15 +285,20 @@
       </div>
       <p class="nikya-fullname">Nikya</p>
       <div class="nikya-card">
-        <div class="hhi-photo-frame hpf-nikya" onclick="openPhotoPopup('img/nikya.jpg','Nikya')">
-          <img src="img/nikya.jpg" alt="Nikya" class="hhi-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="hhi-photo-placeholder">N<span class="hhi-ph-hint">📸 tap to view</span></div>
+        <div class="hhi-blurred" id="blurNikya">
+          <div class="hhi-photo-frame hpf-nikya" onclick="openPhotoPopup('img/nikya.jpg','Nikya')">
+            <img src="img/nikya.jpg" alt="Nikya" class="hhi-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="hhi-photo-placeholder">N<span class="hhi-ph-hint">📸 tap to view</span></div>
+          </div>
+          <p class="nikya-quote">"Nikya — fashionably late to the tribute, never late to the party."</p>
+          <div class="nikya-tags-row">
+            <span class="nikya-tag">😂 Late Entry</span>
+            <span class="nikya-tag">💎 Still a Legend</span>
+            <span class="nikya-tag">🎉 Honorary Member</span>
+          </div>
         </div>
-        <p class="nikya-quote">"Nikya — fashionably late to the tribute, never late to the party."</p>
-        <div class="nikya-tags-row">
-          <span class="nikya-tag">😂 Late Entry</span>
-          <span class="nikya-tag">💎 Still a Legend</span>
-          <span class="nikya-tag">🎉 Honorary Member</span>
+        <div class="hhi-overlay" id="overlayNikya">
+          <button class="hhi-reveal-btn" onclick="revealHhi('nikya')">👀 Tap to Reveal</button>
         </div>
       </div>
     </section>
