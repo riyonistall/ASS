@@ -1,0 +1,304 @@
+/* ═══════════════════════════════════════════════
+   RIYON'S BEAUTIFUL A.S.S. — SCRIPT.JS
+   ═══════════════════════════════════════════════ */
+
+/* ─── Loader ─── */
+(function initLoader() {
+  spawnLoaderParticles();
+
+  // After bar fills + small pause → switch to main site
+  setTimeout(() => {
+    const loader = document.getElementById('loader');
+    loader.classList.add('fade-out');
+    setTimeout(() => {
+      loader.classList.add('hidden');
+      const site = document.getElementById('mainSite');
+      site.classList.remove('hidden');
+      spawnFloatingEmojis();
+      observeCards();
+    }, 900);
+  }, 5000); // 5s total loader time
+})();
+
+function spawnLoaderParticles() {
+  const container = document.getElementById('particles');
+  const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#bd93f9', '#ff79c6', '#8be9fd'];
+  for (let i = 0; i < 40; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 6 + 2;
+    p.style.cssText = `
+      width: ${size}px; height: ${size}px;
+      left: ${Math.random() * 100}%;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      opacity: ${Math.random() * 0.7 + 0.2};
+      animation-duration: ${Math.random() * 6 + 4}s;
+      animation-delay: ${Math.random() * 5}s;
+    `;
+    container.appendChild(p);
+  }
+}
+
+/* ─── Floating emojis in hero ─── */
+function spawnFloatingEmojis() {
+  const emojis = ['🍑','❤️','✨','🔥','💎','👑','😂','🚀','💪','🎯','⚡','🌟','😎','💫','🎉'];
+  const container = document.getElementById('floatingEmojis');
+  for (let i = 0; i < 18; i++) {
+    const el = document.createElement('div');
+    el.className = 'float-emoji';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.cssText = `
+      left: ${Math.random() * 100}%;
+      font-size: ${Math.random() * 1.5 + 1}rem;
+      animation-duration: ${Math.random() * 10 + 8}s;
+      animation-delay: ${Math.random() * 8}s;
+    `;
+    container.appendChild(el);
+  }
+}
+
+/* ─── Scroll to cards ─── */
+function scrollToCards() {
+  document.getElementById('cardsSection').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ─── Card entrance animations on scroll ─── */
+function observeCards() {
+  const cards = document.querySelectorAll('.friend-card');
+  cards.forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(60px) scale(0.92)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.7s cubic-bezier(.17,.67,.35,1.25)';
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const card = entry.target;
+        const delay = parseInt(card.dataset.delay || 0);
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0) scale(1)';
+          spawnCardParticles(card);
+        }, delay);
+        io.unobserve(card);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  cards.forEach((card, i) => {
+    card.dataset.delay = i * 180;
+    io.observe(card);
+  });
+}
+
+/* ─── Card hover particles ─── */
+function spawnCardParticles(card) {
+  const colors = {
+    cardAli:       ['#ff6b6b', '#ff9999', '#ff4444'],
+    cardSiddharth: ['#4ecdc4', '#88ffff', '#00bfbf'],
+    cardSatyam:    ['#ffe66d', '#fff0a0', '#ffd000'],
+  };
+  const palette = colors[card.id] || ['#ffffff'];
+  const container = card.querySelector('.card-particles');
+
+  for (let i = 0; i < 10; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 5 + 2;
+    p.style.cssText = `
+      width: ${size}px; height: ${size}px;
+      left: ${Math.random() * 100}%;
+      background: ${palette[Math.floor(Math.random() * palette.length)]};
+      animation-duration: ${Math.random() * 3 + 2}s;
+      animation-delay: ${Math.random() * 2}s;
+    `;
+    container.appendChild(p);
+  }
+}
+
+/* ─── Modals ─── */
+const modalMap = {
+  ali:        'modalAli',
+  siddharth:  'modalSiddharth',
+  satyam:     'modalSatyam',
+};
+
+function openModal(id) {
+  const overlay = document.getElementById(modalMap[id]);
+  if (!overlay) return;
+
+  // Ripple effect on card
+  const card = document.getElementById('card' + id.charAt(0).toUpperCase() + id.slice(1));
+  if (card) createRipple(card);
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // Entrance confetti
+  burstConfetti(id);
+}
+
+function closeModal(id) {
+  const overlay = document.getElementById(modalMap[id]);
+  if (!overlay) return;
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    Object.keys(modalMap).forEach(id => closeModal(id));
+  }
+});
+
+/* ─── Ripple on click ─── */
+function createRipple(card) {
+  const ripple = document.createElement('div');
+  ripple.style.cssText = `
+    position: absolute; top: 50%; left: 50%;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    transform: translate(-50%,-50%) scale(0);
+    animation: rippleOut 0.6s ease forwards;
+    pointer-events: none; z-index: 10;
+  `;
+  card.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 700);
+}
+
+// Inject ripple keyframe once
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+  @keyframes rippleOut {
+    to { transform: translate(-50%,-50%) scale(20); opacity: 0; }
+  }
+`;
+document.head.appendChild(rippleStyle);
+
+/* ─── Confetti burst ─── */
+function burstConfetti(id) {
+  const colors = {
+    ali:       ['#ff6b6b','#ff9999','#ff4444','#ffffff'],
+    siddharth: ['#4ecdc4','#88ffff','#00bfbf','#ffffff'],
+    satyam:    ['#ffe66d','#fff0a0','#ffd000','#ffffff'],
+  };
+  const palette = colors[id] || ['#ffffff'];
+
+  for (let i = 0; i < 50; i++) {
+    const p = document.createElement('div');
+    const size = Math.random() * 10 + 5;
+    const angle = Math.random() * 360;
+    const dist  = Math.random() * 250 + 80;
+    const color = palette[Math.floor(Math.random() * palette.length)];
+
+    p.style.cssText = `
+      position: fixed;
+      top: 50%; left: 50%;
+      width: ${size}px; height: ${size}px;
+      background: ${color};
+      border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 1;
+    `;
+    document.body.appendChild(p);
+
+    const rad = (angle * Math.PI) / 180;
+    const dx  = Math.cos(rad) * dist;
+    const dy  = Math.sin(rad) * dist;
+
+    p.animate([
+      { transform: 'translate(-50%,-50%) scale(1)', opacity: 1 },
+      { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(0) rotate(${Math.random()*720}deg)`, opacity: 0 },
+    ], {
+      duration: Math.random() * 600 + 500,
+      easing: 'cubic-bezier(.2,.8,.4,1)',
+    }).onfinish = () => p.remove();
+  }
+}
+
+/* ─── Smooth card tilt effect ─── */
+document.querySelectorAll('.friend-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const cx = rect.left + rect.width  / 2;
+    const cy = rect.top  + rect.height / 2;
+    const dx = (e.clientX - cx) / (rect.width  / 2);
+    const dy = (e.clientY - cy) / (rect.height / 2);
+    card.style.transform = `translateY(-14px) scale(1.03) rotateX(${-dy * 8}deg) rotateY(${dx * 8}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+/* ─── Easter egg: click the title letters ─── */
+document.addEventListener('DOMContentLoaded', () => {
+  const assTitle = document.querySelectorAll('.word-ass');
+  if (assTitle.length) {
+    assTitle[0].addEventListener('click', () => {
+      showToast("😂 You clicked A.S.S.! Riyon approves!");
+    });
+  }
+});
+
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.textContent = msg;
+  t.style.cssText = `
+    position: fixed; bottom: 2rem; left: 50%;
+    transform: translateX(-50%) translateY(30px);
+    background: linear-gradient(135deg, #bd93f9, #ff79c6);
+    color: #0a0a14; font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    padding: 0.85rem 2rem; border-radius: 100px;
+    z-index: 9999; opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    white-space: nowrap; pointer-events: none;
+    box-shadow: 0 8px 30px rgba(189,147,249,0.4);
+  `;
+  document.body.appendChild(t);
+  requestAnimationFrame(() => {
+    t.style.opacity = '1';
+    t.style.transform = 'translateX(-50%) translateY(0)';
+  });
+  setTimeout(() => {
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%) translateY(20px)';
+    setTimeout(() => t.remove(), 400);
+  }, 3000);
+}
+
+/* ─── Gratitude section scroll reveal ─── */
+function revealOnScroll() {
+  const targets = document.querySelectorAll('.gratitude-text, .group-photo-frame, .group-caption');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  targets.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(40px)';
+    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    io.observe(el);
+  });
+}
+
+// Run reveal after site becomes visible
+const siteObserver = new MutationObserver(() => {
+  const site = document.getElementById('mainSite');
+  if (site && !site.classList.contains('hidden')) {
+    revealOnScroll();
+    siteObserver.disconnect();
+  }
+});
+siteObserver.observe(document.getElementById('mainSite'), { attributes: true, attributeFilter: ['class'] });

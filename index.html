@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Riyon's Beautiful ASS 🍑</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ═══════════════ LOADING SCREEN ═══════════════ -->
+  <div id="loader" class="loader-screen">
+    <div class="loader-bg-particles" id="particles"></div>
+
+    <div class="loader-content">
+      <p class="loader-intro">Riyon presents...</p>
+
+      <div class="ass-title-wrap">
+        <span class="ass-letter" data-letter="A">A</span>
+        <span class="ass-letter" data-letter="S">S</span>
+        <span class="ass-letter" data-letter="S">S</span>
+      </div>
+
+      <p class="ass-subtitle">Ali &nbsp;·&nbsp; Siddharth &nbsp;·&nbsp; Satyam</p>
+
+      <div class="loader-bar-wrap">
+        <div class="loader-bar" id="loaderBar"></div>
+      </div>
+      <p class="loader-hint">Loading your beautiful people...</p>
+    </div>
+
+    <div class="loader-bottom-text">⚠️ Warning: Extreme cuteness ahead ⚠️</div>
+  </div>
+
+  <!-- ═══════════════ MAIN SITE ═══════════════ -->
+  <div id="mainSite" class="main-site hidden">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-bg"></div>
+      <div class="floating-emojis" id="floatingEmojis"></div>
+
+      <div class="hero-content">
+        <div class="riyon-badge">
+          <span class="badge-text">From Riyon, with ❤️</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="word-riyon">Riyon's</span><br/>
+          <span class="word-beautiful">Beautiful</span><br/>
+          <span class="word-ass">A.S.S.</span>
+        </h1>
+
+        <p class="hero-acronym">
+          <span class="acro-bracket">(</span>
+          <span class="acro-letter acro-a">A</span>li &nbsp;+&nbsp;
+          <span class="acro-letter acro-s">S</span>iddharth &nbsp;+&nbsp;
+          <span class="acro-letter acro-s2">S</span>atyam
+          <span class="acro-bracket">)</span>
+        </p>
+
+        <p class="hero-sub">Three legends. One crew. Zero chill.</p>
+
+        <button class="meet-btn" onclick="scrollToCards()">
+          <span>Meet the A.S.S. Squad</span>
+          <div class="btn-shine"></div>
+        </button>
+      </div>
+
+      <div class="scroll-arrow" onclick="scrollToCards()">
+        <div class="arrow-down"></div>
+      </div>
+    </section>
+
+    <!-- GRATITUDE BANNER -->
+    <section class="gratitude-banner">
+      <div class="gratitude-inner">
+        <div class="gratitude-emoji">🙏</div>
+        <div class="gratitude-text">
+          <h2>"You guys are my <em>everything</em>."</h2>
+          <p>I'm so damn thankful and happy to have you three absolute legends in my life. You make every day brighter, weirder, and a whole lot better. This is my tiny, ridiculous tribute to the greatest crew a guy could ask for.</p>
+          <p class="gratitude-sig">— Riyon (your biggest fan)</p>
+        </div>
+        <div class="gratitude-emoji">✨</div>
+      </div>
+    </section>
+
+    <!-- CARDS SECTION -->
+    <section class="cards-section" id="cardsSection">
+      <h2 class="section-title">Click Each Legend to Reveal Their Story</h2>
+      <p class="section-sub">⬇️ tap a card ⬇️</p>
+
+      <div class="cards-grid">
+
+        <!-- ALI CARD -->
+        <div class="friend-card" id="cardAli" onclick="openModal('ali')">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-glow glow-ali"></div>
+              <div class="avatar-ring ring-ali">
+                <div class="avatar ali-avatar">
+                  <div class="avatar-initials">A</div>
+                  <div class="avatar-crown">👑</div>
+                </div>
+              </div>
+              <h3 class="card-name">Ali</h3>
+              <p class="card-teaser">The A in A.S.S.</p>
+              <div class="card-tags">
+                <span class="tag">🔥 Vibe Master</span>
+                <span class="tag">😂 Comedian</span>
+              </div>
+              <div class="card-click-hint">Click to reveal 👆</div>
+            </div>
+          </div>
+          <div class="card-particles" id="aliParticles"></div>
+        </div>
+
+        <!-- SIDDHARTH CARD -->
+        <div class="friend-card" id="cardSiddharth" onclick="openModal('siddharth')">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-glow glow-siddharth"></div>
+              <div class="avatar-ring ring-siddharth">
+                <div class="avatar siddharth-avatar">
+                  <div class="avatar-initials">S</div>
+                  <div class="avatar-crown">🎯</div>
+                </div>
+              </div>
+              <h3 class="card-name">Siddharth</h3>
+              <p class="card-teaser">The first S in A.S.S.</p>
+              <div class="card-tags">
+                <span class="tag">🧠 Big Brain</span>
+                <span class="tag">💡 The Planner</span>
+              </div>
+              <div class="card-click-hint">Click to reveal 👆</div>
+            </div>
+          </div>
+          <div class="card-particles" id="siddharthParticles"></div>
+        </div>
+
+        <!-- SATYAM CARD -->
+        <div class="friend-card" id="cardSatyam" onclick="openModal('satyam')">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-glow glow-satyam"></div>
+              <div class="avatar-ring ring-satyam">
+                <div class="avatar satyam-avatar">
+                  <div class="avatar-initials">S</div>
+                  <div class="avatar-crown">⚡</div>
+                </div>
+              </div>
+              <h3 class="card-name">Satyam</h3>
+              <p class="card-teaser">The last S in A.S.S.</p>
+              <div class="card-tags">
+                <span class="tag">🚀 The Energy</span>
+                <span class="tag">💪 MVP</span>
+              </div>
+              <div class="card-click-hint">Click to reveal 👆</div>
+            </div>
+          </div>
+          <div class="card-particles" id="satyamParticles"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GROUP PHOTO SECTION -->
+    <section class="group-section">
+      <div class="group-inner">
+        <h2 class="group-title">The A.S.S. Squad 🍑</h2>
+        <div class="group-photo-frame">
+          <div class="group-photo-placeholder">
+            <div class="group-initials">
+              <span class="gi gi-a">A</span>
+              <span class="gi gi-s1">S</span>
+              <span class="gi gi-s2">S</span>
+            </div>
+            <p class="group-photo-label">📸 Add your group photo here!</p>
+            <p class="group-photo-hint">Replace <code>img/group.jpg</code> with your photo</p>
+          </div>
+          <!-- Uncomment and add your photo: <img src="img/group.jpg" alt="The ASS Squad" /> -->
+        </div>
+        <p class="group-caption">"Together we are Riyon's most beautiful A.S.S."</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-hearts">
+        <span>❤️</span><span>🧡</span><span>💛</span><span>💚</span><span>💙</span><span>💜</span>
+      </div>
+      <p class="footer-text">Made with love, laughter & zero shame by <strong>Riyon</strong></p>
+      <p class="footer-sub">© 2025 Riyon's Beautiful A.S.S. — All rights reserved 🍑</p>
+    </footer>
+
+  </div>
+
+  <!-- ═══════════════ MODALS ═══════════════ -->
+
+  <!-- ALI MODAL -->
+  <div class="modal-overlay" id="modalAli" onclick="closeModal('ali')">
+    <div class="modal-box modal-ali" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('ali')">✕</button>
+      <div class="modal-header">
+        <div class="modal-avatar-wrap">
+          <div class="modal-avatar ali-modal-avatar">
+            <!-- Replace with: <img src="img/ali.jpg" alt="Ali"> -->
+            <div class="modal-initials">A</div>
+          </div>
+          <div class="modal-avatar-glow glow-ali-modal"></div>
+        </div>
+        <div class="modal-title-wrap">
+          <h2 class="modal-name">Ali</h2>
+          <p class="modal-tag">The A in A.S.S. 👑</p>
+          <div class="modal-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-joke-box">
+          <p>🎤 <em>"If vibes were a currency, Ali would be a billionaire."</em></p>
+        </div>
+
+        <div class="modal-info-grid">
+          <div class="info-card">
+            <div class="info-icon">💼</div>
+            <div>
+              <h4>What Ali Does</h4>
+              <p>Master of making everything cooler just by being in the room. Also probably the funniest person alive.</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">🏆</div>
+            <div>
+              <h4>Superpower</h4>
+              <p>Can turn any boring situation into an unforgettable memory. Legend has it he once made a math class fun.</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">💎</div>
+            <div>
+              <h4>Riyon says...</h4>
+              <p>Ali, you absolute legend. Having you in my life is like having a personal hype man, comedian, and best friend all in one. I love you bro! 🤝</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-photo-placeholder">
+          <p>🖼️ Add Ali's photo → <code>img/ali.jpg</code></p>
+        </div>
+
+        <div class="modal-tags-row">
+          <span class="modal-tag-chip">🔥 Vibe Master</span>
+          <span class="modal-tag-chip">😂 Comedian</span>
+          <span class="modal-tag-chip">👑 King Energy</span>
+          <span class="modal-tag-chip">🤝 Ride or Die</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDDHARTH MODAL -->
+  <div class="modal-overlay" id="modalSiddharth" onclick="closeModal('siddharth')">
+    <div class="modal-box modal-siddharth" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('siddharth')">✕</button>
+      <div class="modal-header">
+        <div class="modal-avatar-wrap">
+          <div class="modal-avatar siddharth-modal-avatar">
+            <!-- Replace with: <img src="img/siddharth.jpg" alt="Siddharth"> -->
+            <div class="modal-initials">S</div>
+          </div>
+          <div class="modal-avatar-glow glow-siddharth-modal"></div>
+        </div>
+        <div class="modal-title-wrap">
+          <h2 class="modal-name">Siddharth</h2>
+          <p class="modal-tag">The 1st S in A.S.S. 🎯</p>
+          <div class="modal-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-joke-box">
+          <p>🧠 <em>"Siddharth's brain has more RAM than your laptop. And a better GPU."</em></p>
+        </div>
+
+        <div class="modal-info-grid">
+          <div class="info-card">
+            <div class="info-icon">💼</div>
+            <div>
+              <h4>What Siddharth Does</h4>
+              <p>The genius behind the scenes. Plans everything, executes everything, and somehow still has time to roast everyone.</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">🏆</div>
+            <div>
+              <h4>Superpower</h4>
+              <p>Has a solution for every problem before you even finish describing the problem. Certified big-brain operator.</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">💎</div>
+            <div>
+              <h4>Riyon says...</h4>
+              <p>Siddharth, you've always been the one who kept things together. You're not just smart — you're wise. I'm genuinely lucky to call you my friend. Love you man! 🫡</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-photo-placeholder">
+          <p>🖼️ Add Siddharth's photo → <code>img/siddharth.jpg</code></p>
+        </div>
+
+        <div class="modal-tags-row">
+          <span class="modal-tag-chip">🧠 Big Brain</span>
+          <span class="modal-tag-chip">💡 The Planner</span>
+          <span class="modal-tag-chip">🎯 Dead Accurate</span>
+          <span class="modal-tag-chip">📚 Certified Genius</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SATYAM MODAL -->
+  <div class="modal-overlay" id="modalSatyam" onclick="closeModal('satyam')">
+    <div class="modal-box modal-satyam" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('satyam')">✕</button>
+      <div class="modal-header">
+        <div class="modal-avatar-wrap">
+          <div class="modal-avatar satyam-modal-avatar">
+            <!-- Replace with: <img src="img/satyam.jpg" alt="Satyam"> -->
+            <div class="modal-initials">S</div>
+          </div>
+          <div class="modal-avatar-glow glow-satyam-modal"></div>
+        </div>
+        <div class="modal-title-wrap">
+          <h2 class="modal-name">Satyam</h2>
+          <p class="modal-tag">The 2nd S in A.S.S. ⚡</p>
+          <div class="modal-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-joke-box">
+          <p>⚡ <em>"When Satyam walks in, the energy in the room goes from 0 to 100 real quick."</em></p>
+        </div>
+
+        <div class="modal-info-grid">
+          <div class="info-card">
+            <div class="info-icon">💼</div>
+            <div>
+              <h4>What Satyam Does</h4>
+              <p>The unstoppable force of the group. Whatever needs doing, Satyam does it with 200% energy and zero excuses.</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">🏆</div>
+            <div>
+              <h4>Superpower</h4>
+              <p>Infinite motivation. Could hype up a wall to run a marathon. The group's unofficial life coach and cheerleader.</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">💎</div>
+            <div>
+              <h4>Riyon says...</h4>
+              <p>Satyam, you're the energy that keeps all of us going. Your passion and drive inspire me every single day. You're more than a friend — you're family. Love you bro! 🔥</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-photo-placeholder">
+          <p>🖼️ Add Satyam's photo → <code>img/satyam.jpg</code></p>
+        </div>
+
+        <div class="modal-tags-row">
+          <span class="modal-tag-chip">🚀 The Energy</span>
+          <span class="modal-tag-chip">💪 MVP</span>
+          <span class="modal-tag-chip">⚡ Unstoppable</span>
+          <span class="modal-tag-chip">🔥 Hype Machine</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
