@@ -312,14 +312,10 @@ siteObserver.observe(document.getElementById('mainSite'), { attributes: true, at
 
   if (!audio || !btn) return;
 
-  // Start muted so autoplay policy doesn't block it
   audio.volume = 0.65;
-  audio.muted  = true;
+  audio.muted  = false;
 
-  // Try autoplay (muted)
-  audio.play().catch(() => {});
-
-  let isMuted = true;
+  let isMuted = false;
 
   function updateBtn() {
     if (isMuted) {
@@ -330,14 +326,34 @@ siteObserver.observe(document.getElementById('mainSite'), { attributes: true, at
       icon.textContent  = '🎵';
       label.textContent = 'MUTE';
       btn.classList.remove('muted');
-      spawnMusicNotes();
     }
   }
 
-  btn.addEventListener('click', () => {
+  // Try autoplay unmuted right away
+  audio.play().then(() => {
+    updateBtn();
+    spawnMusicNotes();
+  }).catch(() => {
+    // Browser blocked — wait for first user gesture then play
+    function onFirstInteraction() {
+      audio.play().then(() => {
+        updateBtn();
+        spawnMusicNotes();
+      }).catch(() => {});
+      document.removeEventListener('click', onFirstInteraction);
+      document.removeEventListener('keydown', onFirstInteraction);
+    }
+    document.addEventListener('click', onFirstInteraction);
+    document.addEventListener('keydown', onFirstInteraction);
+    updateBtn();
+  });
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
     isMuted = !isMuted;
     audio.muted = isMuted;
     if (!isMuted && audio.paused) audio.play().catch(() => {});
+    if (!isMuted) spawnMusicNotes();
     updateBtn();
   });
 
