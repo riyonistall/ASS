@@ -26,7 +26,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--dark-bg);
   color: var(--text-primary);
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Nunito', sans-serif;
   overflow-x: hidden;
 }
 
@@ -55,7 +55,7 @@ body {
 }
 
 .loader-intro {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Boogaloo', cursive;
   font-size: clamp(1.2rem, 3vw, 1.8rem);
   color: var(--accent-pink);
   opacity: 0;
@@ -67,8 +67,8 @@ body {
 }
 
 .ass-letter {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900;
+  font-family: 'Fredoka One', cursive;
+  font-weight: 400;
   font-size: clamp(5rem, 18vw, 12rem);
   line-height: 1;
   opacity: 0;
@@ -95,7 +95,7 @@ body {
 }
 
 .ass-subtitle {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: clamp(0.9rem, 2.5vw, 1.3rem);
   color: var(--text-secondary);
   letter-spacing: 0.25em;
@@ -242,7 +242,7 @@ body {
 }
 
 .badge-text {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Boogaloo', cursive;
   font-size: clamp(0.9rem, 2vw, 1.2rem);
   color: var(--text-primary);
 }
@@ -252,22 +252,22 @@ body {
 }
 
 .word-riyon {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Boogaloo', cursive;
   font-size: clamp(2.5rem, 7vw, 5rem);
   color: var(--accent-pink);
   display: block;
   animation: slideInLeft 0.8s ease 0.3s both;
 }
 .word-beautiful {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Boogaloo', cursive;
   font-size: clamp(3rem, 9vw, 6.5rem);
   color: var(--accent-purple);
   display: block;
   animation: slideInRight 0.8s ease 0.5s both;
 }
 .word-ass {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900;
+  font-family: 'Fredoka One', cursive;
+  font-weight: 400;
   font-size: clamp(4rem, 14vw, 10rem);
   background: linear-gradient(135deg, var(--ali-color), var(--sid-color), var(--sat-color));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -297,7 +297,7 @@ body {
   animation: fadeSlideDown 0.7s ease 1.2s both;
 }
 .acro-bracket { color: var(--text-secondary); }
-.acro-letter  { font-weight: 700; font-family: 'Orbitron', sans-serif; font-size: 1.1em; }
+.acro-letter  { font-weight: 900; font-family: 'Fredoka One', cursive; font-size: 1.1em; }
 .acro-a  { color: var(--ali-color); }
 .acro-s  { color: var(--sid-color); }
 .acro-s2 { color: var(--sat-color); }
@@ -305,15 +305,16 @@ body {
 .hero-sub {
   font-size: clamp(1rem, 2.5vw, 1.4rem);
   color: var(--text-secondary);
-  font-style: italic;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
   animation: fadeSlideDown 0.7s ease 1.5s both;
 }
 
 .meet-btn {
   position: relative; overflow: hidden;
   background: linear-gradient(135deg, var(--ali-color), var(--sid-color));
-  color: #0a0a14; font-family: 'Orbitron', sans-serif;
-  font-weight: 700; font-size: clamp(0.8rem, 2vw, 1rem);
+  color: #0a0a14; font-family: 'Fredoka One', cursive;
+  font-weight: 400; font-size: clamp(0.85rem, 2vw, 1.05rem);
   padding: 1rem 2.5rem; border: none;
   border-radius: 100px; cursor: pointer;
   letter-spacing: 0.12em; text-transform: uppercase;
@@ -387,12 +388,11 @@ body {
 }
 
 .gratitude-text h2 {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Boogaloo', cursive;
   font-size: clamp(1.8rem, 4vw, 2.8rem);
   color: var(--accent-pink);
   margin-bottom: 1rem;
 }
-.gratitude-text h2 em { color: var(--sat-color); font-style: normal; }
 
 .gratitude-text p {
   font-size: clamp(1rem, 2vw, 1.15rem);
@@ -402,7 +402,7 @@ body {
 }
 .gratitude-sig {
   color: var(--accent-purple) !important;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Boogaloo', cursive;
   font-size: clamp(1.1rem, 2.5vw, 1.4rem) !important;
 }
 
@@ -421,7 +421,7 @@ body {
 
 .section-title {
   text-align: center;
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Fredoka One', cursive;
   font-size: clamp(1.2rem, 3vw, 1.8rem);
   color: var(--text-primary);
   margin-bottom: 0.5rem;
@@ -509,8 +509,8 @@ body {
 .satyam-avatar    { background: linear-gradient(135deg, #1a1a00, #3d3900); }
 
 .avatar-initials {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900; font-size: 2.2rem; line-height: 1;
+  font-family: 'Fredoka One', cursive;
+  font-weight: 400; font-size: 2.2rem; line-height: 1;
 }
 .ali-avatar .avatar-initials       { color: var(--ali-color); }
 .siddharth-avatar .avatar-initials { color: var(--sid-color); }
@@ -527,8 +527,8 @@ body {
 }
 
 .card-name {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700; font-size: 1.4rem;
+  font-family: 'Fredoka One', cursive;
+  font-weight: 400; font-size: 1.5rem;
   margin-bottom: 0.35rem;
 }
 #cardAli .card-name       { color: var(--ali-color); }
@@ -538,7 +538,8 @@ body {
 .card-teaser {
   font-size: 0.9rem; color: var(--text-secondary);
   margin-bottom: 1.1rem;
-  font-style: italic;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
 }
 
 .card-tags {
@@ -581,7 +582,7 @@ body {
 .group-inner { max-width: 700px; margin: 0 auto; text-align: center; }
 
 .group-title {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Fredoka One', cursive;
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   background: linear-gradient(135deg, var(--ali-color), var(--sid-color), var(--sat-color));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -616,8 +617,8 @@ body {
   margin-bottom: 1.5rem;
 }
 .gi {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900; font-size: 4rem;
+  font-family: 'Fredoka One', cursive;
+  font-weight: 400; font-size: 4rem;
   width: 90px; height: 90px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
@@ -637,7 +638,7 @@ body {
 .group-photo-hint code { color: var(--accent-cyan); background: #ffffff10; padding: 0.1em 0.4em; border-radius: 4px; }
 
 .group-caption {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Boogaloo', cursive;
   font-size: clamp(1.1rem, 3vw, 1.6rem);
   color: var(--accent-pink);
 }
@@ -733,8 +734,8 @@ body {
 
 .modal-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .modal-initials {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900; font-size: 3rem; line-height: 1;
+  font-family: 'Fredoka One', cursive;
+  font-weight: 400; font-size: 3rem; line-height: 1;
 }
 .ali-modal-avatar .modal-initials       { color: var(--ali-color); font-size: 3rem; }
 .siddharth-modal-avatar .modal-initials { color: var(--sid-color); font-size: 3rem; }
@@ -758,8 +759,8 @@ body {
 }
 
 .modal-name {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900; font-size: 2rem;
+  font-family: 'Fredoka One', cursive;
+  font-weight: 400; font-size: 2rem;
   margin-bottom: 0.2rem;
 }
 .modal-ali .modal-name       { color: var(--ali-color); }
@@ -776,7 +777,8 @@ body {
   border-left: 4px solid var(--accent-purple);
   padding: 1rem 1.2rem; margin-bottom: 1.5rem;
   font-size: 1rem; color: var(--text-secondary);
-  font-style: italic;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
 }
 
 .modal-info-grid {
@@ -796,9 +798,9 @@ body {
 .info-icon { font-size: 1.8rem; flex-shrink: 0; }
 
 .info-card h4 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.85rem; color: var(--text-primary);
-  margin-bottom: 0.3rem; letter-spacing: 0.05em;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.95rem; color: var(--text-primary);
+  margin-bottom: 0.3rem; letter-spacing: 0.03em;
 }
 .info-card p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
 
@@ -823,3 +825,111 @@ body {
 .modal-box::-webkit-scrollbar { width: 5px; }
 .modal-box::-webkit-scrollbar-track { background: transparent; }
 .modal-box::-webkit-scrollbar-thumb { background: #ffffff30; border-radius: 100px; }
+
+/* ═══════════════════════════════════
+   MUSIC PLAYER BUTTON
+   ═══════════════════════════════════ */
+
+.music-btn-wrap {
+  position: fixed;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 7000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.music-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  background: linear-gradient(135deg, #bd93f9cc, #ff79c6cc);
+  border: 2px solid #ffffff33;
+  border-radius: 20px;
+  padding: 0.85rem 0.7rem;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  box-shadow: 0 6px 28px #bd93f966;
+  color: #0a0a14;
+  animation: musicBtnFloat 3s ease-in-out infinite;
+}
+
+.music-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 40px #ff79c688;
+}
+
+.music-btn.muted {
+  background: linear-gradient(135deg, #ffffff22, #ffffff11);
+  border-color: #ffffff22;
+  box-shadow: 0 4px 16px #00000044;
+  color: var(--text-secondary);
+}
+
+.music-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  animation: musicIconSpin 0.4s ease;
+}
+
+.music-label {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.music-song-name {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.62rem;
+  color: var(--text-secondary);
+  text-align: center;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  max-height: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.7;
+}
+
+@keyframes musicBtnFloat {
+  0%, 100% { box-shadow: 0 6px 28px #bd93f966; }
+  50%       { box-shadow: 0 10px 40px #ff79c688; }
+}
+
+@keyframes musicNote {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+  100% { transform: translateY(-60px) rotate(30deg) scale(0.5); opacity: 0; }
+}
+
+.music-note-burst {
+  position: absolute;
+  font-size: 1.2rem;
+  pointer-events: none;
+  animation: musicNote 1s ease forwards;
+}
+
+@media (max-width: 600px) {
+  .music-btn-wrap {
+    top: auto;
+    bottom: 1.2rem;
+    right: 1rem;
+    transform: none;
+    flex-direction: row;
+  }
+  .music-song-name {
+    writing-mode: horizontal-tb;
+    transform: none;
+    max-height: none;
+    max-width: 100px;
+    font-size: 0.58rem;
+  }
+}
