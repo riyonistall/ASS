@@ -302,3 +302,59 @@ const siteObserver = new MutationObserver(() => {
   }
 });
 siteObserver.observe(document.getElementById('mainSite'), { attributes: true, attributeFilter: ['class'] });
+
+/* ─── Music Player ─── */
+(function initMusic() {
+  const audio   = document.getElementById('bgMusic');
+  const btn     = document.getElementById('musicBtn');
+  const icon    = document.getElementById('musicIcon');
+  const label   = document.getElementById('musicLabel');
+
+  if (!audio || !btn) return;
+
+  // Start muted so autoplay policy doesn't block it
+  audio.volume = 0.65;
+  audio.muted  = true;
+
+  // Try autoplay (muted)
+  audio.play().catch(() => {});
+
+  let isMuted = true;
+
+  function updateBtn() {
+    if (isMuted) {
+      icon.textContent  = '🔇';
+      label.textContent = 'UNMUTE';
+      btn.classList.add('muted');
+    } else {
+      icon.textContent  = '🎵';
+      label.textContent = 'MUTE';
+      btn.classList.remove('muted');
+      spawnMusicNotes();
+    }
+  }
+
+  btn.addEventListener('click', () => {
+    isMuted = !isMuted;
+    audio.muted = isMuted;
+    if (!isMuted && audio.paused) audio.play().catch(() => {});
+    updateBtn();
+  });
+
+  updateBtn();
+})();
+
+function spawnMusicNotes() {
+  const wrap  = document.getElementById('musicBtnWrap');
+  const notes = ['🎵','🎶','🎤','🎸','🎧'];
+  for (let i = 0; i < 4; i++) {
+    const n = document.createElement('span');
+    n.className  = 'music-note-burst';
+    n.textContent = notes[Math.floor(Math.random() * notes.length)];
+    n.style.left = `${Math.random() * 60 - 10}px`;
+    n.style.top  = `${Math.random() * 20}px`;
+    n.style.animationDelay = `${i * 0.15}s`;
+    wrap.appendChild(n);
+    setTimeout(() => n.remove(), 1200);
+  }
+}
