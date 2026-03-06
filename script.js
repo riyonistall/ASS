@@ -18,7 +18,7 @@
       spawnFloatingEmojis();
       observeCards();
     }, 900);
-  }, 5000); // 5s total loader time
+  }, 10000); // 10s total loader time
 })();
 
 /* ─── ASS loader letter font cycling ─── */
@@ -50,7 +50,7 @@ function cycleAssLetterFonts() {
     const startDelay = 1000 + idx * 300;
     setTimeout(() => {
       let cycle = 0;
-      const totalCycles = wildFonts.length * 2;
+      const totalCycles = wildFonts.length * 6;
       const intervalMs = 80;
 
       letter.style.display = 'inline-block';

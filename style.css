@@ -111,14 +111,14 @@ body {
   border-radius: 100px;
   overflow: hidden;
   opacity: 0;
-  animation: fadeSlideDown 0.4s ease 2.3s forwards;
+  animation: fadeSlideDown 0.4s ease 7.0s forwards;
 }
 
 .loader-bar {
   height: 100%; width: 0;
   background: linear-gradient(90deg, var(--ali-color), var(--sid-color), var(--sat-color));
   border-radius: 100px;
-  animation: barFill 2s cubic-bezier(.4,0,.2,1) 2.4s forwards;
+  animation: barFill 2s cubic-bezier(.4,0,.2,1) 7.1s forwards;
   box-shadow: 0 0 12px var(--sid-color);
 }
 
@@ -128,7 +128,7 @@ body {
   font-size: 0.85rem;
   color: var(--text-secondary);
   opacity: 0;
-  animation: fadeSlideDown 0.4s ease 2.5s forwards;
+  animation: fadeSlideDown 0.4s ease 7.2s forwards;
 }
 
 .loader-bottom-text {
