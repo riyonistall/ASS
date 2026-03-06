@@ -374,8 +374,7 @@ siteObserver.observe(document.getElementById('mainSite'), { attributes: true, at
   if (!audio || !btn) return;
 
   audio.volume = 0.65;
-  let isMuted = false;
-  let waitingForGesture = false;
+  let isMuted = true;
 
   function setMuteState(muted) {
     isMuted = muted;
@@ -385,31 +384,27 @@ siteObserver.observe(document.getElementById('mainSite'), { attributes: true, at
     btn.classList.toggle('muted', muted);
   }
 
-  // Try to play unmuted immediately
-  audio.muted = false;
+  // Start muted — browsers allow muted autoplay
+  audio.muted = true;
   audio.play().then(() => {
-    setMuteState(false);
-    spawnMusicNotes();
-  }).catch(() => {
-    // Browser requires a user gesture — show TAP TO PLAY
-    waitingForGesture = true;
-    icon.textContent  = '▶️';
-    label.textContent = 'TAP PLAY';
-    btn.classList.add('muted');
-  });
+    setMuteState(true);
+  }).catch(() => {});
+
+  // Unmute on first user interaction anywhere on the page
+  function unmuteOnGesture() {
+    if (isMuted) {
+      setMuteState(false);
+      spawnMusicNotes();
+    }
+    document.removeEventListener('click', unmuteOnGesture);
+    document.removeEventListener('keydown', unmuteOnGesture);
+    document.removeEventListener('touchstart', unmuteOnGesture);
+  }
+  document.addEventListener('click', unmuteOnGesture);
+  document.addEventListener('keydown', unmuteOnGesture);
+  document.addEventListener('touchstart', unmuteOnGesture);
 
   btn.addEventListener('click', () => {
-    if (waitingForGesture) {
-      // First click: start the music
-      waitingForGesture = false;
-      audio.muted = false;
-      audio.play().then(() => {
-        setMuteState(false);
-        spawnMusicNotes();
-      }).catch(() => {});
-      return;
-    }
-    // Normal toggle
     setMuteState(!isMuted);
     if (!isMuted && audio.paused) audio.play().catch(() => {});
     if (!isMuted) spawnMusicNotes();
