@@ -437,49 +437,6 @@ function stepHarshini() {
   }
 }
 
-/* ─── Harshini Scoreboard 10-click unlock ─── */
-let harshiniScoreStep = 0;
-const harshiniScoreSteps = [
-  'are you sure? 🤨',
-  'really sure? 🙄',
-  'like actually sure? 😤',
-  'bro stop 🛑',
-  'WHY ARE YOU LIKE THIS 😠',
-  'okay... last warning 😏',
-  'she will be mad at you 👀',
-  'i am not responsible 😅',
-  'final answer?? 🫵',
-  // step 10 triggers reveal
-];
-function stepHarshiniScore() {
-  const btn     = document.getElementById('harshiniScoreBtn');
-  const counter = document.getElementById('harshiniScoreCounter');
-  if (!btn) return;
-
-  btn.classList.remove('shake');
-  void btn.offsetWidth;
-  btn.classList.add('shake');
-
-  harshiniScoreStep++;
-  if (counter) counter.textContent = `${harshiniScoreStep} / 10`;
-
-  btn.classList.toggle('angry', harshiniScoreStep >= 3 && harshiniScoreStep <= 5);
-
-  if (harshiniScoreStep <= harshiniScoreSteps.length) {
-    btn.textContent = harshiniScoreSteps[harshiniScoreStep - 1];
-  }
-
-  if (harshiniScoreStep >= 10) {
-    btn.textContent = 'FINE HERE 😤✨';
-    btn.classList.remove('angry');
-    setTimeout(() => {
-      const locked = document.getElementById('harshiniScoreLocked');
-      const stats  = document.getElementById('harshiniScoreStats');
-      if (locked) locked.style.display = 'none';
-      if (stats)  stats.style.display  = '';
-    }, 500);
-  }
-}
 
 /* ─── Side Mute Button → "listen to it please" popup ─── */
 (function initSideMuteBtn() {

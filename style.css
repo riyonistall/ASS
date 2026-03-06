@@ -889,100 +889,6 @@ body {
   .listen-popup.show { transform: translateX(-50%) scale(1); }
 }
 
-/* ═══════════════════════════════════
-   SCOREBOARD SECTION
-   ═══════════════════════════════════ */
-
-.scoreboard-section {
-  padding: 5rem 2rem;
-  background: #050505;
-  position: relative;
-  overflow: hidden;
-}
-.scoreboard-section::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% 50%, #bd93f90a 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.scoreboard-grid {
-  display: flex; flex-wrap: wrap;
-  justify-content: center; gap: 2rem;
-  max-width: 1100px; margin: 0 auto;
-  position: relative; z-index: 1;
-}
-
-.score-card {
-  background: #0f0f0f;
-  border-radius: 20px;
-  border: 1px solid #ffffff12;
-  width: clamp(260px, 28vw, 320px);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.score-card:hover { transform: translateY(-8px); }
-.score-ali:hover       { box-shadow: 0 20px 50px #ff6b6b44; border-color: #ff6b6b55; }
-.score-siddharth:hover { box-shadow: 0 20px 50px #4ecdc444; border-color: #4ecdc455; }
-.score-satyam:hover    { box-shadow: 0 20px 50px #ffe66d44; border-color: #ffe66d55; }
-
-.score-card-header {
-  display: flex; align-items: center; gap: 0.8rem;
-  padding: 1.4rem 1.6rem 1.2rem;
-  border-bottom: 1px solid #ffffff0e;
-}
-.score-ali       .score-card-header { background: linear-gradient(135deg, #ff6b6b18, transparent); }
-.score-siddharth .score-card-header { background: linear-gradient(135deg, #4ecdc418, transparent); }
-.score-satyam    .score-card-header { background: linear-gradient(135deg, #ffe66d18, transparent); }
-
-.score-avatar {
-  width: 46px; height: 46px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Fredoka One', cursive; font-size: 1.4rem;
-  flex-shrink: 0;
-}
-.score-avatar-ali  { background: #1a1a1a; border: 2px solid #ff6b6b; color: #ff6b6b; }
-.score-avatar-sid  { background: #1a1a1a; border: 2px solid #4ecdc4; color: #4ecdc4; }
-.score-avatar-sat  { background: #1a1a1a; border: 2px solid #ffe66d; color: #ffe66d; }
-
-.score-name {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.3rem; flex: 1;
-}
-.score-ali .score-name       { color: #ff6b6b; }
-.score-siddharth .score-name { color: #4ecdc4; }
-.score-satyam .score-name    { color: #ffe66d; }
-
-.score-crown { font-size: 1.4rem; }
-
-.score-stats { padding: 1rem 1.6rem 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; }
-
-.stat-row {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 0.55rem 0.8rem;
-  border-radius: 10px;
-  background: #ffffff06;
-  border: 1px solid #ffffff08;
-  transition: background 0.2s;
-}
-.score-card:hover .stat-row { background: #ffffff0a; }
-
-.stat-label {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800; font-size: 0.78rem;
-  color: #ffffff66;
-  text-transform: uppercase; letter-spacing: 0.05em;
-  flex-shrink: 0; margin-right: 0.5rem;
-}
-
-.stat-value {
-  font-family: 'Fredoka One', cursive;
-  font-size: 0.88rem;
-  text-align: right;
-}
-.score-ali .stat-value       { color: #ff9999; }
-.score-siddharth .stat-value { color: #88ffff; }
-.score-satyam .stat-value    { color: #fff0a0; }
 
 /* Scrollbar in modal */
 .modal-box::-webkit-scrollbar { width: 5px; }
@@ -1561,10 +1467,6 @@ body {
 .modal-photo-placeholder p,
 .modal-photo-placeholder code { color: #ffffff !important; }
 
-/* Scoreboard */
-.score-name,
-.stat-label,
-.stat-value { color: #ffffff !important; }
 
 /* HHI section */
 .hhi-pre,
@@ -1585,9 +1487,6 @@ body {
 }
 
 /* HHI avatar initials */
-.score-avatar-ali,
-.score-avatar-sid,
-.score-avatar-sat,
 .ha-helbin,
 .ha-harshini,
 .ha-izu { color: #ffffff !important; }
@@ -1633,51 +1532,3 @@ body {
 .glow-helbin-modal { box-shadow: 0 0 25px 5px #bd93f966; }
 .glow-izu-modal    { box-shadow: 0 0 25px 5px #8be9fd66; }
 
-/* ── Score cards ── */
-.score-helbin:hover { box-shadow: 0 20px 50px #bd93f944; border-color: #bd93f955; }
-.score-izu:hover    { box-shadow: 0 20px 50px #8be9fd44; border-color: #8be9fd55; }
-.score-harshini:hover { box-shadow: 0 20px 50px #ff79c644; border-color: #ff79c655; }
-
-.score-helbin   .score-card-header { background: linear-gradient(135deg, #bd93f918, transparent); }
-.score-izu      .score-card-header { background: linear-gradient(135deg, #8be9fd18, transparent); }
-.score-harshini .score-card-header { background: linear-gradient(135deg, #ff79c618, transparent); }
-
-.score-avatar-helbin   { background: linear-gradient(135deg, #bd93f9, #8860d0); color: #fff; }
-.score-avatar-izu      { background: linear-gradient(135deg, #8be9fd, #50c7e8); color: #fff; }
-.score-avatar-harshini { background: linear-gradient(135deg, #ff79c6, #bd93f9); color: #fff; }
-
-/* ── Harshini score lock UI ── */
-.harshini-score-locked-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 0;
-}
-
-.harshini-lock-msg {
-  font-size: 0.85rem;
-  opacity: 0.75;
-  text-align: center;
-  padding: 0 8px;
-}
-
-.harshini-score-btn {
-  background: linear-gradient(135deg, #ff79c6, #bd93f9);
-  color: #fff;
-  border: none;
-  border-radius: 30px;
-  padding: 10px 22px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.harshini-score-btn:hover { transform: scale(1.06); box-shadow: 0 6px 20px #ff79c655; }
-.harshini-score-btn.angry { background: linear-gradient(135deg, #ff6b6b, #ff4444); }
-
-.harshini-score-counter {
-  font-size: 0.75rem;
-  opacity: 0.55;
-  letter-spacing: 1px;
-}
