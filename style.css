@@ -1502,3 +1502,344 @@ body {
 /* Lightbox */
 .lightbox-name { color: #ffffff !important; }
 
+
+
+/* ═══════════════════════════════════════════════
+   STORYBOARD SECTION
+   ═══════════════════════════════════════════════ */
+
+.storyboard-section {
+  padding: 80px 24px 60px;
+  background: linear-gradient(180deg, #0d0d1a 0%, #12102a 100%);
+  text-align: center;
+}
+
+.sb-title {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: #fff;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+}
+
+.sb-sub {
+  color: #aaa;
+  font-size: 1rem;
+  margin-bottom: 48px;
+  font-style: italic;
+}
+
+.sb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Each storyboard panel */
+.sb-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* The sketchy frame border */
+.sb-frame {
+  border: 3px solid #fff;
+  border-radius: 4px;
+  background: #1a1630;
+  box-shadow:
+    4px 4px 0 #ff79c6,
+    8px 8px 0 #bd93f940;
+  overflow: hidden;
+  position: relative;
+  /* rough corners via clip-path wiggle */
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Corner tick marks like a real storyboard */
+.sb-frame::before,
+.sb-frame::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: #ff79c6;
+  border-style: solid;
+  z-index: 2;
+}
+.sb-frame::before {
+  top: -3px; left: -3px;
+  border-width: 3px 0 0 3px;
+}
+.sb-frame::after {
+  bottom: -3px; right: -3px;
+  border-width: 0 3px 3px 0;
+}
+
+/* Sketch content area */
+.sb-sketch {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  gap: 6px;
+  background: #13112a;
+  position: relative;
+}
+
+.sb-sketch.sk-dark-bg { background: #09071a; }
+.sb-sketch.sk-nikya-bg { background: #0f0a1f; }
+.sb-sketch.sk-footer-bg { background: #0a0a1a; }
+
+/* Small label inside sketch */
+.sk-inner-tiny {
+  font-size: 0.48rem;
+  color: #aaa;
+  font-style: italic;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.sk-inner-txt {
+  font-size: 0.45rem;
+  color: #888;
+  margin: 0;
+  font-style: italic;
+}
+
+/* ── Panel 1: Loader ── */
+.sk-loader-letters {
+  display: flex;
+  gap: 6px;
+}
+.sk-let {
+  font-family: 'Bangers', cursive;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.sk-a  { color: #ff79c6; text-shadow: 0 0 10px #ff79c680; }
+.sk-s1 { color: #bd93f9; text-shadow: 0 0 10px #bd93f980; }
+.sk-s2 { color: #8be9fd; text-shadow: 0 0 10px #8be9fd80; }
+.sk-loadbar-wrap {
+  width: 70%;
+  height: 5px;
+  background: #333;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.sk-loadbar {
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(90deg, #ff79c6, #bd93f9);
+  border-radius: 3px;
+}
+
+/* ── Panel 2: Hero ── */
+.sk-hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: center;
+}
+.sk-ht-line {
+  font-family: 'Bangers', cursive;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.sk-ht-riyon    { font-size: 0.75rem; color: #f8f8f2; }
+.sk-ht-beautiful { font-size: 0.65rem; color: #ffb86c; }
+.sk-ht-ass      { font-size: 1.4rem; color: #ff79c6; text-shadow: 0 0 12px #ff79c6aa; }
+.sk-cta-btn {
+  margin-top: 4px;
+  padding: 3px 10px;
+  border: 2px solid #50fa7b;
+  border-radius: 20px;
+  font-size: 0.45rem;
+  color: #50fa7b;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+.sk-emojis {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+/* ── Panels 3 & 5: Cards ── */
+.sk-cards-row {
+  display: flex;
+  gap: 6px;
+}
+.sk-card {
+  width: 46px;
+  border: 2px solid #444;
+  border-radius: 6px;
+  padding: 5px 3px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: #1e1b3a;
+}
+.sk-card-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 0.9rem;
+  border: 2px solid #555;
+}
+.sk-card-name  { font-size: 0.36rem; color: #ccc; font-family: 'Nunito', sans-serif; font-weight: 700; }
+.sk-card-hint  { font-size: 0.5rem; }
+
+.sk-c-ali     .sk-card-avatar { background: #ff79c620; border-color: #ff79c6; color: #ff79c6; }
+.sk-c-sid     .sk-card-avatar { background: #bd93f920; border-color: #bd93f9; color: #bd93f9; }
+.sk-c-sat     .sk-card-avatar { background: #50fa7b20; border-color: #50fa7b; color: #50fa7b; }
+.sk-av-h      { background: #ff79c620; border-color: #ff79c6; color: #ff79c6; }
+.sk-av-h2     { background: #ffb86c20; border-color: #ffb86c; color: #ffb86c; }
+.sk-av-i      { background: #8be9fd20; border-color: #8be9fd; color: #8be9fd; }
+
+/* ── Panel 4: Modal ── */
+.sk-modal {
+  width: 90%;
+  background: #1a1630;
+  border: 2px solid #555;
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sk-modal-top {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.sk-modal-av {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ff79c630;
+  border: 2px solid #ff79c6;
+  color: #ff79c6;
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.sk-modal-info { display: flex; flex-direction: column; gap: 3px; flex: 1; }
+.sk-mline { height: 3px; background: #444; border-radius: 2px; }
+.sk-ml-long   { width: 100%; }
+.sk-ml-medium { width: 70%; }
+.sk-ml-short  { width: 45%; }
+.sk-stars { font-size: 0.45rem; color: #f1fa8c; }
+.sk-modal-body { display: flex; flex-direction: column; gap: 3px; }
+
+/* ── Panel 5: HHI title ── */
+.sk-hhi-title {
+  font-family: 'Bangers', cursive;
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  background: linear-gradient(90deg, #ff79c6, #bd93f9, #8be9fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Panel 6: Nikya ── */
+.sk-n-big {
+  font-family: 'Bangers', cursive;
+  font-size: 2.8rem;
+  color: #bd93f9;
+  text-shadow: 0 0 20px #bd93f9aa;
+  line-height: 1;
+}
+.sk-nikya-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.7rem;
+  color: #fff;
+  letter-spacing: 2px;
+}
+.sk-nikya-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+}
+.sk-nt {
+  font-size: 0.35rem;
+  background: #bd93f930;
+  border: 1px solid #bd93f9;
+  border-radius: 10px;
+  padding: 2px 5px;
+  color: #bd93f9;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+}
+
+/* ── Panel 7: Footer ── */
+.sk-footer-hearts {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+}
+.sk-footer-line {
+  font-size: 0.5rem;
+  color: #ccc;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+}
+.sk-footer-copy {
+  font-size: 0.38rem;
+  color: #888;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ── Caption below each panel ── */
+.sb-caption {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+  padding: 0 2px;
+}
+.sb-num {
+  font-family: 'Bangers', cursive;
+  font-size: 1.3rem;
+  color: #ff79c6;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.sb-desc {
+  font-size: 0.78rem;
+  color: #ccc;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* white override for storyboard text */
+.sb-title,
+.sb-sub,
+.sb-desc,
+.sb-num,
+.sk-inner-tiny,
+.sk-inner-txt,
+.sk-card-name,
+.sk-nikya-name,
+.sk-footer-line,
+.sk-footer-copy,
+.sk-hhi-title,
+.sk-ht-riyon,
+.sk-ht-beautiful,
+.sk-ht-ass,
+.sk-cta-btn { color: revert !important; }
